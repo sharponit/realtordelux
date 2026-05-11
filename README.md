@@ -52,3 +52,25 @@ Intellectual Property owned by Paradox FZCO
 ## Realtime + Edge Functions (Placeholders)
 - Realtime channels: notifications, offers, transaction stages, messages, AI alerts, document approvals.
 - Edge functions: workflow automation, notification triggers, AI triggers, webhooks, PDF generation, escrow/payment events.
+
+## Setup
+1. Install dependencies: `npm install`
+2. Copy env: `cp .env.example .env.local`
+3. Configure Supabase project URL/keys and AI service URL/key.
+4. Run migrations in Supabase SQL editor (`supabase/migrations/20260511_initial.sql`).
+5. Optional seeds: `supabase/seeds/seed.sql` and `data/seeds/luxury-properties.es.json`.
+6. Start app: `npm run dev`
+
+## Stripe Setup Notes
+- Current payment architecture uses `lib/payments/provider-factory.ts` to resolve provider adapters.
+- Stripe adapter is active now (`lib/payments/stripe-adapter.ts`).
+- Add real Stripe SDK/webhooks in adapter without changing UI/business services.
+- Keep invoice records, platform fees, and compliance metadata in Supabase.
+
+## Legal & Compliance Disclaimers
+- Luxary Realtor™ does not provide legal advice.
+- Luxary Realtor™ does not provide tax advice.
+- Luxary Realtor™ does not provide financial advice.
+- Crypto payments may create tax obligations and compliance requirements.
+- Users must consult regulated advisors before transactions.
+- Escrow/payment handling should use regulated providers when required by law.
