@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Sierra Blanca Panoramic Villa",
+    "description": "Private gated villa with sea views, wellness suite, smart home automation, and family wing.",
+    "country": "Spain",
+    "city": "Marbella",
+    "neighborhood": "Sierra Blanca",
+    "price": 12500000,
+    "currency": "EUR",
+    "propertyType": "Villa",
+    "bedrooms": 7,
+    "bathrooms": 8,
+    "size": 1250,
+    "plotSize": 3200,
+    "seaView": true,
+    "pool": true,
+    "smartHome": true,
+    "goldenVisaEligible": true,
+    "islamicFinanceCompatible": true,
+    "cryptoPaymentAccepted": false
+  },
+  {
+    "title": "La Zagaleta Contemporary Estate",
+    "description": "Ultra-private estate with guest pavilion, staff quarters, private gym and spa.",
+    "country": "Spain",
+    "city": "Benahavis",
+    "neighborhood": "La Zagaleta",
+    "price": 19800000,
+    "currency": "EUR",
+    "propertyType": "Estate",
+    "bedrooms": 9,
+    "bathrooms": 11,
+    "size": 1850,
+    "plotSize": 5600,
+    "seaView": true,
+    "pool": true,
+    "smartHome": true,
+    "goldenVisaEligible": true,
+    "islamicFinanceCompatible": true,
+    "cryptoPaymentAccepted": true
+  }
+]
