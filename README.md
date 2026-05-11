@@ -74,3 +74,10 @@ Intellectual Property owned by Paradox FZCO
 - Crypto payments may create tax obligations and compliance requirements.
 - Users must consult regulated advisors before transactions.
 - Escrow/payment handling should use regulated providers when required by law.
+
+
+## Stripe Environment
+- Add `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` in Vercel and local `.env.local`.
+- Add `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` only on server-side environments.
+- Do not commit live secret keys to git.
+- Payment abstraction remains provider-agnostic via `lib/payments/*`.
