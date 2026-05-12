@@ -1,0 +1,7 @@
+/** Viyra.com™ */
+import { Property, Transaction, Document, AgentAction } from '@/types/models';
+export const properties: Property[] = [{ id:'p1', title:'Marbella Sea-View Villa', country:'Spain', city:'Marbella', price:8500000, media:[{id:'m1',url:'/hero.jpg',type:'image'}], features:[{name:'Bedrooms',value:6},{name:'Pool',value:true}], aiMatch:94 }];
+export const transactionStages = ['Offer submitted','Seller reviewing offer','Offer accepted','Reservation contract pending','Deposit pending','Buyer KYC verification','Seller documents pending','Lawyer due diligence','Financing confirmation','Notary preparation','Signing scheduled','Final payment confirmation','Deed signed','Property transferred','Keys handed over'];
+export const transactions: Transaction[] = [{ id:'t1', propertyId:'p1', progress:46, stages: transactionStages.map((s,i)=>({ key:s,status:i<5?'complete':i===5?'active':'pending', responsibleRole: i%2===0?'buyer':'lawyer', deadline:'2026-08-01', requiredAction:'Review and submit documents', documents:['Passport/ID'], aiExplanation:'AI predicts medium risk delay if overdue.', risk:i<8?'low':'medium', nextAction:'Upload pending files' })) }];
+export const docs: Document[] = [{ id:'d1', type:'Proof of funds', status:'Under review', responsibleParty:'buyer', uploadDate:'2026-05-01', expiryDate:'2026-11-01'}];
+export const agentActions: AgentAction[] = [{ id:'a1', severity:'medium', message:'Seller missing energy certificate.', transactionId:'t1' }];
