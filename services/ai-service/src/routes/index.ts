@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 export const routes = {
   health: () => ({ ok: true, service: 'ai-service', provider: 'mock' }),
   matchProperty: () => ({ matches: [{ propertyId: 'p1', score: 93 }] }),

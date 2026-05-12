@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import { AIResult, MatchPropertyInput, PropertyMatch } from './types';
 import { mockMatchProperty } from './mock-ai';
 const AI_URL = process.env.AI_SERVICE_URL;

@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import { Market } from '@/types/models';
 export const markets: Market[] = [
   { code:'ES', country:'Spain', currency:'EUR', defaultLanguage:'es', languages:['es','en','ar','fr'] },

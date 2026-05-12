@@ -1,5 +1,5 @@
 /**
- * Luxary Realtor™
+ * Viyra.com™
  * Developed by SaaSolutions SL
  * Intellectual Property owned by Paradox FZCO
  * © 2026 Paradox FZCO. All rights reserved.

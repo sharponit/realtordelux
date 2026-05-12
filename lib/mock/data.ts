@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import { Property, Transaction, Document, AgentAction } from '@/types/models';
 export const properties: Property[] = [{ id:'p1', title:'Marbella Sea-View Villa', country:'Spain', city:'Marbella', price:8500000, media:[{id:'m1',url:'/hero.jpg',type:'image'}], features:[{name:'Bedrooms',value:6},{name:'Pool',value:true}], aiMatch:94 }];
 export const transactionStages = ['Offer submitted','Seller reviewing offer','Offer accepted','Reservation contract pending','Deposit pending','Buyer KYC verification','Seller documents pending','Lawyer due diligence','Financing confirmation','Notary preparation','Signing scheduled','Final payment confirmation','Deed signed','Property transferred','Keys handed over'];
