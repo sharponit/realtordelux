@@ -1,2 +1,8 @@
-/** Viyra.com™ */
-export default function Dash(){const cards=['Buyer: saved properties, offers, progress','Seller: listings, offers, docs','Realtor: leads, bottlenecks, AI alerts','Lawyer: due diligence + risk alerts','Notary: signing readiness','Admin: users, markets, AI logs, settings'];return <main><h2 className='text-2xl mb-4'>Role-based Dashboards</h2><section className='grid md:grid-cols-2 gap-4'>{cards.map(c=><div key={c} className='card'>{c}</div>)}</section><div className='card mt-4 text-sm'>Admin attribution: v0.1.0 · © 2026 Paradox FZCO · Developed by SaaSolutions SL · IP Owner: Paradox FZCO</div></main>}
+import { redirect } from 'next/navigation';
+import { getPostLoginPath } from '@/lib/auth/routing';
+import { requireUserProfile } from '@/lib/auth/session';
+
+export default async function DashboardIndex() {
+  const { profile } = await requireUserProfile();
+  redirect(getPostLoginPath({ role: profile.role, onboarding_status: profile.onboarding_status }) as any);
+}

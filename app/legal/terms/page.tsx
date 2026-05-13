@@ -1,2 +1,16 @@
-/** Viyra.com™ */
-export default function Page(){return <main className='card'><h2 className='text-2xl'>terms</h2><p>Legal placeholder page for enterprise compliance workflows.</p></main>}
+import { PageShell, Panel } from '@/components/layout/SiteChrome';
+
+export default function TermsPage() {
+  return (
+    <PageShell
+      eyebrow="Legal"
+      title="Terms of Service"
+      description="Platform terms placeholder for AI-assisted discovery, transaction coordination, and advisor collaboration."
+    >
+      <Panel className="p-8 text-sm leading-8 text-taupe">
+        These terms frame Viyra as a premium operating layer for property discovery, buyer intake,
+        document workflows, and transaction progress management.
+      </Panel>
+    </PageShell>
+  );
+}

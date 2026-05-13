@@ -4,7 +4,7 @@
  * Intellectual Property owned by Paradox FZCO
  * © 2026 Paradox FZCO. All rights reserved.
  */
-export type Role = 'buyer'|'seller'|'realtor'|'lawyer'|'notary'|'admin';
+export type Role = 'buyer'|'seller'|'realtor'|'photographer'|'lawyer'|'notary'|'firm_owner'|'firm_admin'|'admin'|'super_admin';
 export interface User { id:string; name:string; role:Role; language:string; market:string }
 export interface PropertyMedia { id:string; url:string; type:'image'|'video'|'floorplan' }
 export interface PropertyFeature { name:string; value:string|boolean|number }
