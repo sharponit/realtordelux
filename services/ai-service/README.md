@@ -1,4 +1,4 @@
-# Luxary Realtor™ AI Service (Railway)
+# Viyra.com™ AI Service (Railway)
 
 Separate AI/LLM backend intended for Railway deployment.
 

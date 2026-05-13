@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 export type UserRole = 'buyer'|'seller'|'realtor'|'lawyer'|'notary'|'admin';
 export interface ProfileRow { id:string; role:UserRole; country:string; preferred_language:string; verification_status:string; kyc_status:string; market_access:string[]; created_at:string; updated_at:string; created_by?:string|null; deleted_at?:string|null }
 export interface Database { public: { Tables: { profiles: { Row: ProfileRow }; properties: { Row: { id:string; realtor_id:string; market_code:string; title:string; price:number; created_at:string; updated_at:string; created_by?:string|null; deleted_at?:string|null } }; transactions: { Row: { id:string; property_id:string; buyer_id:string; seller_id:string; status:string; created_at:string; updated_at:string; created_by?:string|null } } } } }

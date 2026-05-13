@@ -1,4 +1,4 @@
-# Luxary Realtor™
+# Viyra.com™
 
 Enterprise MVP foundation for a global luxury real-estate operating system built with Next.js + TypeScript + Tailwind.
 
@@ -16,7 +16,7 @@ Enterprise MVP foundation for a global luxury real-estate operating system built
 
 ## Intellectual Property
 
-Luxary Realtor™  
+Viyra.com™  
 Developed by SaaSolutions SL  
 Intellectual Property owned by Paradox FZCO  
 © 2026 Paradox FZCO. All rights reserved.
@@ -68,9 +68,9 @@ Intellectual Property owned by Paradox FZCO
 - Keep invoice records, platform fees, and compliance metadata in Supabase.
 
 ## Legal & Compliance Disclaimers
-- Luxary Realtor™ does not provide legal advice.
-- Luxary Realtor™ does not provide tax advice.
-- Luxary Realtor™ does not provide financial advice.
+- Viyra.com™ does not provide legal advice.
+- Viyra.com™ does not provide tax advice.
+- Viyra.com™ does not provide financial advice.
 - Crypto payments may create tax obligations and compliance requirements.
 - Users must consult regulated advisors before transactions.
 - Escrow/payment handling should use regulated providers when required by law.

@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import Link from 'next/link';
 import { Locale, t } from '@/lib/i18n';
 const paths = [['home','/'],['search','/search'],['ai','/ai-concierge'],['dashboard','/dashboard'],['transactions','/transactions'],['documents','/documents'],['agents','/agent-center'],['markets','/markets']] as const;

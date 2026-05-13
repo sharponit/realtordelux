@@ -1,4 +1,4 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import { supabase } from './client';
 export const signInWithPassword = (email: string, password: string) => supabase.auth.signInWithPassword({ email, password });
 export const signInWithMagicLink = (email: string) => supabase.auth.signInWithOtp({ email });

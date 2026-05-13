@@ -1,4 +1,4 @@
--- Luxary Realtor™ schema scaffold
+-- Viyra.com™ schema scaffold
 create table if not exists roles (id uuid primary key default gen_random_uuid(), name text unique not null, created_at timestamptz default now(), updated_at timestamptz default now(), created_by uuid);
 create table if not exists profiles (id uuid primary key, role text not null, country text, preferred_language text default 'en', verification_status text default 'pending', kyc_status text default 'pending', market_access text[] default '{}', created_at timestamptz default now(), updated_at timestamptz default now(), created_by uuid, deleted_at timestamptz);
 create table if not exists markets (code text primary key, name text, currency text, created_at timestamptz default now(), updated_at timestamptz default now(), created_by uuid);

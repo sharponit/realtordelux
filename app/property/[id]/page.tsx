@@ -1,3 +1,3 @@
-/** Luxary Realtor™ */
+/** Viyra.com™ */
 import { properties } from '@/lib/mock/data';
 export default async function PropertyDetail({ params }: { params: Promise<{id:string}>}){const {id}=await params;const p=properties.find(x=>x.id===id)??properties[0];return <main className='space-y-4'><h2 className='text-3xl'>{p.title}</h2><div className='card'><p>Price: €{p.price.toLocaleString()}</p><p>AI match score: {p.aiMatch}</p><p>Lifestyle score: 91 · Investment score: 90 · Legal readiness: 88 · Cultural compatibility: 86</p><p>Nearby: Airport 35 min · Schools 12 min · Marina/Golf/Beach available</p><p>AI explanation: Strong fit for private international family lifestyle with remote purchase readiness.</p><div className='flex gap-2 mt-3'><button className='px-3 py-2 bg-gold rounded'>Make Offer</button><button className='px-3 py-2 border border-gold rounded'>Ask AI Concierge</button></div></div></main>}
