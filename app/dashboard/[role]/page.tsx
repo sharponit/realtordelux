@@ -6,14 +6,14 @@ import { requireRoleRoute } from '@/lib/auth/session';
 const dashboardCards: Record<UserRole, string[]> = {
   buyer: ['Saved properties', 'AI match preferences', 'Offers', 'Documents'],
   seller: ['My properties', 'Offers received', 'Documents', 'Messages'],
-  realtor: ['Listings', 'Leads', 'Clients', 'Viewings', 'Offers', 'Firm'],
+  realtor: ['Invite Seller', 'Seller onboarding progress', 'Listings pending review', 'Leads', 'Clients', 'Commission attribution'],
   photographer: ['Incoming job requests', 'Accepted jobs', 'Scheduled shoots', 'Photo uploads', 'Pricing settings', 'Portfolio management', 'Verification status', 'Earnings overview'],
   lawyer: ['Cases', 'Clients', 'Documents', 'Compliance'],
   notary: ['Transactions', 'Appointments', 'Documents', 'Verification'],
-  firm_owner: ['Company profile', 'Users', 'Licenses', 'Billing', 'Compliance verification'],
-  firm_admin: ['Company profile', 'Users', 'Licenses', 'Documents'],
-  admin: ['Platform users', 'Firms', 'Subscriptions', 'Verification queue', 'Support'],
-  super_admin: ['Full platform access', 'Users', 'Firms', 'Subscriptions', 'Settings']
+  firm_owner: ['Company profile', 'Users', 'Licenses', 'Billing', 'Seller invitations', 'Compliance verification'],
+  firm_admin: ['Company profile', 'Users', 'Licenses', 'Seller invitations', 'Documents'],
+  admin: ['Platform users', 'Firms', 'Subscriptions', 'Verification queue', 'Attribution audit', 'Support'],
+  super_admin: ['Full platform access', 'Users', 'Firms', 'Subscriptions', 'Attribution audit', 'Settings']
 };
 
 export default async function RoleDashboard({ params }: { params: Promise<{ role: string }> }) {

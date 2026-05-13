@@ -25,7 +25,9 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
   ],
   realtor: [
     { label: 'Dashboard', href: '/dashboard/realtor' },
+    { label: 'Invite Seller', href: '/realtor/invite-seller' },
     { label: 'Listings', href: '/listings' },
+    { label: 'Review Listings', href: '/realtor/listings/review' },
     { label: 'Leads', href: '/leads' },
     { label: 'Clients', href: '/clients' },
     { label: 'Viewings', href: '/viewings' },
@@ -71,6 +73,7 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Billing', href: '/firm/billing' },
     { label: 'Compliance Verification', href: '/verification/company' },
     { label: 'Workflows', href: '/firm/workflows' },
+    { label: 'Seller Invitations', href: '/brokerage/invitations' },
     { label: 'Messages', href: '/messages' },
     { label: 'Settings', href: '/settings' }
   ],
@@ -80,6 +83,7 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Users', href: '/firm/users' },
     { label: 'Licenses', href: '/firm/licenses' },
     { label: 'Documents', href: '/documents' },
+    { label: 'Seller Invitations', href: '/brokerage/invitations' },
     { label: 'Messages', href: '/messages' },
     { label: 'Settings', href: '/settings' }
   ],
@@ -91,6 +95,7 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Verification Queue', href: '/admin/verification' },
     { label: 'Photographers', href: '/admin/photographers' },
     { label: 'Photography Jobs', href: '/admin/photography-jobs' },
+    { label: 'Attribution Audit', href: '/admin/attribution-audit' },
     { label: 'Support', href: '/admin/support' },
     { label: 'Platform Settings', href: '/admin/settings' }
   ],
@@ -102,6 +107,7 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Verification Queue', href: '/admin/verification' },
     { label: 'Photographers', href: '/admin/photographers' },
     { label: 'Photography Jobs', href: '/admin/photography-jobs' },
+    { label: 'Attribution Audit', href: '/admin/attribution-audit' },
     { label: 'Support', href: '/admin/support' },
     { label: 'Platform Settings', href: '/admin/settings' },
     { label: 'All Profiles', href: '/profile/super-admin' }

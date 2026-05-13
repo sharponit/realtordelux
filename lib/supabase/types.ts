@@ -181,6 +181,101 @@ export interface PhotographyUploadRow {
   updated_at: string;
 }
 
+export interface SellerInvitationRow {
+  id: string;
+  token_hash: string;
+  seller_full_name: string;
+  seller_email: string;
+  seller_phone: string | null;
+  property_address: string;
+  city: string;
+  country: string;
+  estimated_property_value: number | null;
+  property_type: string | null;
+  preferred_privacy_mode: string;
+  personal_message: string | null;
+  commission_model: string;
+  commission_percentage: number;
+  platform_fee_percentage: number;
+  representation_type: string;
+  invited_by_realtor_id: string;
+  brokerage_id: string | null;
+  property_id: string | null;
+  listing_id: string | null;
+  status: string;
+  expires_at: string;
+  opened_at: string | null;
+  accepted_by: string | null;
+  accepted_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PropertyListingRow {
+  id: string;
+  property_id: string;
+  seller_id: string;
+  listing_realtor_id: string;
+  brokerage_id: string | null;
+  invitation_id: string | null;
+  privacy_mode: string;
+  status: string;
+  title: string | null;
+  description: string | null;
+  ai_metadata: Json;
+  missing_information: Json;
+  legal_review_requested_at: string | null;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SellerPropertyOnboardingRow {
+  id: string;
+  invitation_id: string;
+  seller_id: string;
+  property_id: string;
+  listing_id: string;
+  ownership_name: string;
+  seller_type: string;
+  title_deed_url: string | null;
+  identity_document_url: string | null;
+  company_document_url: string | null;
+  living_area_sqm: number | null;
+  plot_size_sqm: number | null;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  staff_rooms: number | null;
+  garage_spaces: number | null;
+  luxury_features: string[];
+  amenity_flags: Json;
+  media_urls: string[];
+  request_certified_photographer: boolean;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CommissionAttributionRow {
+  id: string;
+  property_id: string;
+  listing_id: string | null;
+  seller_id: string;
+  listing_realtor_id: string;
+  buyer_realtor_id: string | null;
+  referral_realtor_id: string | null;
+  brokerage_id: string | null;
+  commission_percentage: number;
+  platform_fee_percentage: number;
+  attribution_source: string;
+  invitation_id: string;
+  representation_type: string;
+  status: string;
+  custom_split: Json;
+  created_at: string;
+  accepted_at: string | null;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -200,13 +295,35 @@ export interface Database {
       photography_job_invites: { Row: any; Insert: any; Update: any };
       photography_uploads: { Row: PhotographyUploadRow; Insert: Partial<PhotographyUploadRow>; Update: Partial<PhotographyUploadRow> };
       photography_reviews: { Row: any; Insert: any; Update: any };
+      seller_invitations: { Row: SellerInvitationRow; Insert: Partial<SellerInvitationRow>; Update: Partial<SellerInvitationRow> };
+      property_listings: { Row: PropertyListingRow; Insert: Partial<PropertyListingRow>; Update: Partial<PropertyListingRow> };
+      seller_realtor_relationships: { Row: any; Insert: any; Update: any };
+      seller_property_onboardings: { Row: SellerPropertyOnboardingRow; Insert: Partial<SellerPropertyOnboardingRow>; Update: Partial<SellerPropertyOnboardingRow> };
+      property_attributions: { Row: any; Insert: any; Update: any };
+      commission_attributions: { Row: CommissionAttributionRow; Insert: Partial<CommissionAttributionRow>; Update: Partial<CommissionAttributionRow> };
+      co_listing_agents: { Row: any; Insert: any; Update: any };
+      referral_links: { Row: any; Insert: any; Update: any };
+      notification_events: { Row: any; Insert: any; Update: any };
       properties: {
         Row: {
           id: string;
           realtor_id: string | null;
+          seller_id?: string | null;
+          invited_by_realtor_id?: string | null;
+          brokerage_id?: string | null;
+          invitation_id?: string | null;
           market_code: string | null;
           title: string | null;
           price: number | null;
+          address?: string | null;
+          city?: string | null;
+          country?: string | null;
+          property_type?: string | null;
+          listing_privacy_mode?: string | null;
+          seller_onboarding_status?: string | null;
+          attribution_source?: string | null;
+          ownership_verified?: boolean;
+          ai_metadata?: Json;
           created_at: string;
           updated_at: string;
           created_by?: string | null;
