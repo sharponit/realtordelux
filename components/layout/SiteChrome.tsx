@@ -74,10 +74,15 @@ export function SiteFooter() {
     <footer className="border-t border-black/10 bg-[#171717] text-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between lg:px-10">
         <ViyraLogo light />
-        <p className="max-w-xl text-sm leading-6 text-white/65">
-          Luxury real estate, reimagined. Global property workflows, AI-assisted guidance, and
-          discreet transaction support for premium buyers, sellers, and advisors.
-        </p>
+        <div className="max-w-xl text-sm leading-6 text-white/65">
+          <p>
+            Luxury real estate, reimagined. Global property workflows, AI-assisted guidance, and
+            discreet transaction support for premium buyers, sellers, and advisors.
+          </p>
+          <p className="mt-4 pl-10 text-xs tracking-[0.03em] text-white/50 md:pl-0">
+            Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
