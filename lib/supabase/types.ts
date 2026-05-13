@@ -78,6 +78,109 @@ export interface SubscriptionRow {
   updated_at: string;
 }
 
+export interface PhotographerProfileRow {
+  id: string;
+  user_id: string;
+  display_name: string;
+  profile_photo_url: string | null;
+  country: string;
+  city: string;
+  operating_region: string | null;
+  operating_radius_km: number;
+  languages: string[];
+  phone: string | null;
+  email: string | null;
+  website: string | null;
+  social_links: Json;
+  portfolio_images: string[];
+  drone_available: boolean;
+  drone_certification_url: string | null;
+  equipment_list: string[];
+  real_estate_experience: string | null;
+  luxury_experience_years: number;
+  average_delivery_days: number;
+  services: string[];
+  base_price: number;
+  add_on_prices: Json;
+  rating: number;
+  review_count: number;
+  completed_jobs: number;
+  completed_luxury_jobs: number;
+  verification_status: string;
+  active_status: string;
+  viyra_service_fee_rate: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PhotographerPricingRow {
+  id: string;
+  user_id: string;
+  interior_price: number;
+  exterior_price: number;
+  drone_price: number;
+  twilight_price: number;
+  video_walkthrough_price: number;
+  tour_360_price: number;
+  floorplan_scan_price: number;
+  viyra_service_fee_rate: number;
+  calculated_service_fee: number;
+  calculated_customer_total: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PhotographyJobRow {
+  id: string;
+  property_id: string | null;
+  requested_by: string;
+  photographer_id: string | null;
+  property_address: string | null;
+  property_city: string | null;
+  property_region: string | null;
+  property_country: string | null;
+  requested_shoot_date: string | null;
+  service_package: string[];
+  requires_drone: boolean;
+  photographer_price: number;
+  viyra_service_fee: number;
+  customer_total: number;
+  status: string;
+  payment_status: string;
+  stripe_payment_intent_id: string | null;
+  payout_status: string;
+  photographer_payout_amount: number;
+  platform_fee_amount: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PhotographyUploadRow {
+  id: string;
+  photography_job_id: string;
+  uploaded_by: string;
+  storage_bucket: string;
+  storage_path: string;
+  file_name: string;
+  file_type: string;
+  photo_category: string | null;
+  upload_status: string;
+  image_count: number;
+  below_minimum_warning: boolean;
+  admin_override_minimum: boolean;
+  ai_score: number | null;
+  ai_selected: boolean;
+  ai_category: string | null;
+  sharpness_score: number | null;
+  brightness_score: number | null;
+  luxury_score: number | null;
+  room_detected: string | null;
+  image_orientation: string | null;
+  publication_status: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -90,6 +193,13 @@ export interface Database {
         Update: Partial<ProfessionalVerificationRow>;
       };
       subscriptions: { Row: SubscriptionRow; Insert: Partial<SubscriptionRow>; Update: Partial<SubscriptionRow> };
+      photographer_profiles: { Row: PhotographerProfileRow; Insert: Partial<PhotographerProfileRow>; Update: Partial<PhotographerProfileRow> };
+      photographer_pricing: { Row: PhotographerPricingRow; Insert: Partial<PhotographerPricingRow>; Update: Partial<PhotographerPricingRow> };
+      photographer_portfolios: { Row: any; Insert: any; Update: any };
+      photography_jobs: { Row: PhotographyJobRow; Insert: Partial<PhotographyJobRow>; Update: Partial<PhotographyJobRow> };
+      photography_job_invites: { Row: any; Insert: any; Update: any };
+      photography_uploads: { Row: PhotographyUploadRow; Insert: Partial<PhotographyUploadRow>; Update: Partial<PhotographyUploadRow> };
+      photography_reviews: { Row: any; Insert: any; Update: any };
       properties: {
         Row: {
           id: string;

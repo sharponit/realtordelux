@@ -7,6 +7,7 @@ const dashboardCards: Record<UserRole, string[]> = {
   buyer: ['Saved properties', 'AI match preferences', 'Offers', 'Documents'],
   seller: ['My properties', 'Offers received', 'Documents', 'Messages'],
   realtor: ['Listings', 'Leads', 'Clients', 'Viewings', 'Offers', 'Firm'],
+  photographer: ['Incoming job requests', 'Accepted jobs', 'Scheduled shoots', 'Photo uploads', 'Pricing settings', 'Portfolio management', 'Verification status', 'Earnings overview'],
   lawyer: ['Cases', 'Clients', 'Documents', 'Compliance'],
   notary: ['Transactions', 'Appointments', 'Documents', 'Verification'],
   firm_owner: ['Company profile', 'Users', 'Licenses', 'Billing', 'Compliance verification'],

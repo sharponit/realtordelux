@@ -37,6 +37,21 @@ export default async function RoleProfile({ params }: { params: Promise<{ role: 
             <div><dt>Security settings</dt><dd className="font-semibold text-black">MFA and trusted-device placeholders</dd></div>
           </dl>
         </section>
+        {routeRole === 'photographer' ? (
+          <section className="border border-black/10 bg-white p-7 lg:col-span-2">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+              Photographer Profile
+            </p>
+            <div className="grid gap-4 text-sm text-taupe md:grid-cols-3">
+              <div><dt>Portfolio</dt><dd className="font-semibold text-black">Portfolio images placeholder</dd></div>
+              <div><dt>Drone certification</dt><dd className="font-semibold text-black">Upload required when drone is available</dd></div>
+              <div><dt>Equipment list</dt><dd className="font-semibold text-black">Camera, lenses, lighting, drone</dd></div>
+              <div><dt>Available services</dt><dd className="font-semibold text-black">Interior, exterior, drone, twilight, video, 360, floorplan</dd></div>
+              <div><dt>Base price</dt><dd className="font-semibold text-black">Set by photographer</dd></div>
+              <div><dt>VIYRA service fee</dt><dd className="font-semibold text-black">3% added to customer total</dd></div>
+            </div>
+          </section>
+        ) : null}
       </div>
     </ProtectedShell>
   );

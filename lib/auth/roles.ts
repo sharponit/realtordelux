@@ -2,6 +2,7 @@ export const USER_ROLES = [
   'buyer',
   'seller',
   'realtor',
+  'photographer',
   'lawyer',
   'notary',
   'firm_owner',
@@ -16,7 +17,7 @@ export type OnboardingStatus = 'not_started' | 'in_progress' | 'pending_verifica
 
 export type FirmType = 'real_estate_agency' | 'law_firm' | 'notary_office' | 'mixed_services';
 
-export const PROFESSIONAL_ROLES = ['realtor', 'lawyer', 'notary'] as const satisfies readonly UserRole[];
+export const PROFESSIONAL_ROLES = ['realtor', 'photographer', 'lawyer', 'notary'] as const satisfies readonly UserRole[];
 export const FIRM_ROLES = ['firm_owner', 'firm_admin'] as const satisfies readonly UserRole[];
 export const PLATFORM_ROLES = ['admin', 'super_admin'] as const satisfies readonly UserRole[];
 
@@ -24,6 +25,7 @@ export const roleLabels: Record<UserRole, string> = {
   buyer: 'Buyer',
   seller: 'Seller',
   realtor: 'Realtor',
+  photographer: 'Photographer',
   lawyer: 'Lawyer',
   notary: 'Notary',
   firm_owner: 'Firm Owner',
@@ -36,6 +38,7 @@ export const roleDashboardPath: Record<UserRole, string> = {
   buyer: '/dashboard/buyer',
   seller: '/dashboard/seller',
   realtor: '/dashboard/realtor',
+  photographer: '/dashboard/photographer',
   lawyer: '/dashboard/lawyer',
   notary: '/dashboard/notary',
   firm_owner: '/dashboard/firm-owner',
@@ -53,7 +56,7 @@ export function requiresFirm(role: UserRole) {
 }
 
 export function isProfessionalRole(role: UserRole) {
-  return role === 'realtor' || role === 'lawyer' || role === 'notary';
+  return role === 'realtor' || role === 'photographer' || role === 'lawyer' || role === 'notary';
 }
 
 export function isPlatformRole(role: UserRole) {

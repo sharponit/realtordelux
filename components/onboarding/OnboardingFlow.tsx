@@ -9,6 +9,7 @@ const roleOptions: Array<{ role: UserRole; label: string; path: string }> = [
   { role: 'buyer', label: 'Individual buyer', path: 'buyer_seller' },
   { role: 'seller', label: 'Individual seller', path: 'buyer_seller' },
   { role: 'realtor', label: 'Realtor', path: 'professional' },
+  { role: 'photographer', label: 'Photographer', path: 'photographer' },
   { role: 'lawyer', label: 'Lawyer', path: 'professional' },
   { role: 'notary', label: 'Notary', path: 'professional' },
   { role: 'firm_owner', label: 'Firm owner', path: 'firm_owner' },
@@ -27,6 +28,10 @@ export function OnboardingFlow({ userEmail }: { userEmail: string }) {
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [vatNumber, setVatNumber] = useState('');
   const [licenseSeats, setLicenseSeats] = useState(1);
+  const [city, setCity] = useState('');
+  const [operatingRadius, setOperatingRadius] = useState(50);
+  const [basePrice, setBasePrice] = useState(500);
+  const [droneAvailable, setDroneAvailable] = useState(false);
   const [message, setMessage] = useState('');
   const selectedPath = useMemo(() => roleOptions.find((item) => item.role === role)?.path, [role]);
 
@@ -52,7 +57,7 @@ export function OnboardingFlow({ userEmail }: { userEmail: string }) {
       role,
       country,
       preferred_language: preferredLanguage,
-      onboarding_status: selectedPath === 'firm_owner' || selectedPath === 'professional' ? 'pending_verification' : 'complete'
+      onboarding_status: selectedPath === 'firm_owner' || selectedPath === 'professional' || selectedPath === 'photographer' ? 'pending_verification' : 'complete'
     });
 
     if (profileError) {
@@ -103,6 +108,47 @@ export function OnboardingFlow({ userEmail }: { userEmail: string }) {
           firmName,
           professionType: 'firm'
         })
+      });
+    }
+
+    if (selectedPath === 'photographer') {
+      const photographerPrice = Number(basePrice) || 0;
+      const viyraServiceFee = Number((photographerPrice * 0.03).toFixed(2));
+
+      const { error: photographerError } = await supabase.from('photographer_profiles').upsert({
+        user_id: user.id,
+        display_name: fullName,
+        email: user.email || userEmail,
+        phone,
+        country,
+        city,
+        operating_radius_km: operatingRadius,
+        languages: [preferredLanguage],
+        drone_available: droneAvailable,
+        real_estate_experience: intent,
+        base_price: photographerPrice,
+        viyra_service_fee_rate: 0.03,
+        verification_status: 'pending',
+        active_status: 'active'
+      });
+
+      if (photographerError) {
+        setMessage(photographerError.message);
+        return;
+      }
+
+      await supabase.from('photographer_pricing').upsert({
+        user_id: user.id,
+        interior_price: photographerPrice,
+        exterior_price: photographerPrice,
+        drone_price: droneAvailable ? 250 : 0,
+        twilight_price: 180,
+        video_walkthrough_price: 350,
+        tour_360_price: 300,
+        floorplan_scan_price: 200,
+        viyra_service_fee_rate: 0.03,
+        calculated_service_fee: viyraServiceFee,
+        calculated_customer_total: photographerPrice + viyraServiceFee
       });
     }
 
@@ -179,6 +225,34 @@ export function OnboardingFlow({ userEmail }: { userEmail: string }) {
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-taupe">License seats</span>
             <input className="mt-2 w-full border border-black/10 bg-porcelain px-4 py-3" min={1} onChange={(e) => setLicenseSeats(Number(e.target.value))} type="number" value={licenseSeats} />
           </label>
+        </section>
+      ) : null}
+
+      {selectedPath === 'photographer' ? (
+        <section className="grid gap-4 border border-black/10 bg-white p-7 md:grid-cols-2">
+          <p className="md:col-span-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+            Photographer profile setup
+          </p>
+          <label>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-taupe">City / operating base</span>
+            <input className="mt-2 w-full border border-black/10 bg-porcelain px-4 py-3" onChange={(e) => setCity(e.target.value)} required value={city} />
+          </label>
+          <label>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-taupe">Operating radius in km</span>
+            <input className="mt-2 w-full border border-black/10 bg-porcelain px-4 py-3" min={1} onChange={(e) => setOperatingRadius(Number(e.target.value))} type="number" value={operatingRadius} />
+          </label>
+          <label>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-taupe">Base price</span>
+            <input className="mt-2 w-full border border-black/10 bg-porcelain px-4 py-3" min={0} onChange={(e) => setBasePrice(Number(e.target.value))} type="number" value={basePrice} />
+          </label>
+          <label className="flex items-center gap-3 pt-7 text-sm text-taupe">
+            <input checked={droneAvailable} onChange={(e) => setDroneAvailable(e.target.checked)} type="checkbox" />
+            Drone photography available with certification upload later
+          </label>
+          <div className="md:col-span-2 border border-gold/30 bg-gold/10 p-4 text-sm leading-7 text-black/70">
+            Customer total preview: photographer fee €{basePrice.toLocaleString()} + VIYRA service fee
+            €{(basePrice * 0.03).toFixed(2)} = €{(basePrice * 1.03).toFixed(2)}.
+          </div>
         </section>
       ) : null}
 

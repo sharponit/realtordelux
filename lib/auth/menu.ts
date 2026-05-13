@@ -35,6 +35,16 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Firm', href: '/firm' },
     { label: 'Profile', href: '/profile/realtor' }
   ],
+  photographer: [
+    { label: 'Dashboard', href: '/dashboard/photographer' },
+    { label: 'Incoming Requests', href: '/photography/jobs' },
+    { label: 'Scheduled Shoots', href: '/photography/scheduled' },
+    { label: 'Uploads', href: '/photography/jobs/demo/upload' },
+    { label: 'Pricing', href: '/photographer/pricing' },
+    { label: 'Portfolio', href: '/photographer/portfolio' },
+    { label: 'Earnings', href: '/photographer/earnings' },
+    { label: 'Profile', href: '/profile/photographer' }
+  ],
   lawyer: [
     { label: 'Dashboard', href: '/dashboard/lawyer' },
     { label: 'Cases', href: '/cases' },
@@ -79,6 +89,8 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Firms', href: '/admin/firms' },
     { label: 'Subscriptions', href: '/admin/subscriptions' },
     { label: 'Verification Queue', href: '/admin/verification' },
+    { label: 'Photographers', href: '/admin/photographers' },
+    { label: 'Photography Jobs', href: '/admin/photography-jobs' },
     { label: 'Support', href: '/admin/support' },
     { label: 'Platform Settings', href: '/admin/settings' }
   ],
@@ -88,6 +100,8 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Firms', href: '/admin/firms' },
     { label: 'Subscriptions', href: '/admin/subscriptions' },
     { label: 'Verification Queue', href: '/admin/verification' },
+    { label: 'Photographers', href: '/admin/photographers' },
+    { label: 'Photography Jobs', href: '/admin/photography-jobs' },
     { label: 'Support', href: '/admin/support' },
     { label: 'Platform Settings', href: '/admin/settings' },
     { label: 'All Profiles', href: '/profile/super-admin' }
