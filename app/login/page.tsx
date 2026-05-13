@@ -1,7 +1,14 @@
 import { LoginPanel } from '@/components/auth/LoginPanel';
 import { ViyraLogo } from '@/components/layout/SiteChrome';
 
-export default function LoginPage() {
+type LoginPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const authConfigMissing = params?.auth_config === 'missing';
+
   return (
     <main className="grid min-h-screen bg-porcelain text-black lg:grid-cols-[0.9fr_1.1fr]">
       <section className="flex flex-col justify-between px-6 py-8 lg:px-12">
@@ -19,13 +26,13 @@ export default function LoginPage() {
           </p>
         </div>
         <p className="text-xs text-black/45">
-          Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
+          Developed by SaaSolutions SL | &copy; 2026 Paradox FZCO. All rights reserved.
         </p>
       </section>
 
       <section className="flex items-center justify-center bg-[#171717] px-6 py-10">
         <div className="w-full max-w-md">
-          <LoginPanel />
+          <LoginPanel authConfigMissing={authConfigMissing} />
         </div>
       </section>
     </main>

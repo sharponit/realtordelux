@@ -8,11 +8,20 @@ export async function GET(request: NextRequest) {
   const code = requestUrl.searchParams.get('code');
   const next = requestUrl.searchParams.get('next');
   let response = NextResponse.redirect(new URL(next || '/dashboard', request.url));
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
+
+  if (!hasSupabaseConfig) {
+    const url = new URL('/login', request.url);
+    url.searchParams.set('auth_config', 'missing');
+    return NextResponse.redirect(url);
+  }
 
   if (code) {
     const supabase = createServerClient<Database>(
-      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+      supabaseUrl as string,
+      supabaseAnonKey as string,
       {
         cookies: {
           getAll() {
@@ -31,7 +40,7 @@ export async function GET(request: NextRequest) {
     } = await supabase.auth.getUser();
 
     if (user) {
-      const { data: profile } = await supabase
+      const { data: profile } = await (supabase as any)
         .from('profiles')
         .select('role,onboarding_status')
         .eq('user_id', user.id)

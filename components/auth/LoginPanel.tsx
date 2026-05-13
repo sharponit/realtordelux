@@ -9,7 +9,11 @@ const oauthButtons = [
   { label: 'Continue with Microsoft', provider: 'azure' }
 ] as const;
 
-export function LoginPanel() {
+type LoginPanelProps = {
+  authConfigMissing?: boolean;
+};
+
+export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [mode, setMode] = useState<'password' | 'magic'>('password');
@@ -60,6 +64,12 @@ export function LoginPanel() {
           Sign in to manage private property searches, professional workflows, firm seats, and
           verified transaction rooms.
         </p>
+        {authConfigMissing ? (
+          <p className="mt-4 border border-gold/30 bg-gold/10 px-4 py-3 text-left text-xs leading-6 text-black/70">
+            Supabase authentication is not configured for this deployment. Add the Vercel
+            environment variables, then redeploy.
+          </p>
+        ) : null}
       </div>
 
       <div className="space-y-3">
