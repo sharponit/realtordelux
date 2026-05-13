@@ -1,0 +1,22 @@
+{
+  "name": "viyra-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Railway-deployable AI microservice for the VIYRA luxury real-estate platform.",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/server.js && node --check src/routes/aiRoutes.js && node --check src/services/ollamaClient.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "zod": "^3.24.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
