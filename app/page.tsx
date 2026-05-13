@@ -232,6 +232,9 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <div className="border-t border-white/10 px-6 py-5 text-center text-[11px] tracking-[0.04em] text-white/35 md:text-right lg:px-10">
+          Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
+        </div>
       </section>
     </main>
   );
