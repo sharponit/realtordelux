@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SiteHeader } from '@/components/layout/SiteChrome';
 
 const heroImage =
   'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=90';
@@ -62,50 +63,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#06101f]/95 via-[#081225]/55 to-[#081225]/5" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#06101f]/60 via-transparent to-[#06101f]/30" />
 
-        <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-7 lg:px-10">
-          <Link href="/" className="flex items-center gap-4">
-            <span className="grid h-12 w-10 place-items-center border border-gold text-xl font-semibold text-gold">
-              V
-            </span>
-            <span className="leading-none">
-              <span className="block font-serif text-3xl uppercase tracking-[0.18em] text-white">
-                Viyra
-              </span>
-              <span className="block text-center text-[11px] uppercase tracking-[0.48em] text-white/70">
-                Realty
-              </span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-9 text-xs font-semibold uppercase tracking-[0.14em] text-white/90 lg:flex">
-            <Link href="/search" className="hover:text-gold">
-              Properties
-            </Link>
-            <Link href="/ai-concierge" className="hover:text-gold">
-              Buyers
-            </Link>
-            <Link href="/agent-center" className="hover:text-gold">
-              Sellers
-            </Link>
-            <Link href="/markets" className="hover:text-gold">
-              About
-            </Link>
-            <Link href="/documents" className="hover:text-gold">
-              Contact
-            </Link>
-          </nav>
-
-          <Link
-            href="/ai-concierge"
-            className="hidden border border-gold px-7 py-4 text-xs font-bold uppercase tracking-[0.14em] text-gold transition hover:bg-gold hover:text-navy md:inline-flex"
-          >
-            Book a Consultation
-          </Link>
-        </header>
+        <div className="relative z-10">
+          <SiteHeader light />
+        </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 pb-32 pt-24 lg:px-10 lg:pt-36">
           <div className="max-w-2xl">
-            <h1 className="font-serif text-5xl leading-[1.05] text-white md:text-7xl">
+            <h1 className="font-display text-5xl leading-[1.05] text-white md:text-7xl">
               Extraordinary Homes.
               <br />
               Exceptional Lives.
@@ -158,7 +122,7 @@ export default function Home() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
               Featured Properties
             </p>
-            <h2 className="font-serif text-4xl text-[#17110d] md:text-5xl">
+            <h2 className="font-display text-4xl text-[#17110d] md:text-5xl">
               Handpicked For You
             </h2>
           </div>
@@ -189,7 +153,7 @@ export default function Home() {
               <div className="px-5 py-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-serif text-xl text-[#17110d]">{property.title}</h3>
+                    <h3 className="font-display text-xl text-[#17110d]">{property.title}</h3>
                     <p className="mt-1 text-sm text-[#6e685f]">{property.location}</p>
                   </div>
                   <p className="shrink-0 text-sm font-semibold text-[#17110d]">{property.price}</p>
@@ -225,7 +189,7 @@ export default function Home() {
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
               Why Choose Viyra Realty
             </p>
-            <h2 className="font-serif text-4xl leading-tight md:text-5xl">
+            <h2 className="font-display text-4xl leading-tight md:text-5xl">
               Discretion. Expertise. Results.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/78">
@@ -238,7 +202,7 @@ export default function Home() {
               {strengths.map(([title, copy]) => (
                 <div key={title}>
                   <div className="mb-5 h-px w-12 bg-gold" />
-                  <h3 className="font-serif text-lg">{title}</h3>
+                  <h3 className="font-display text-lg">{title}</h3>
                   <p className="mt-2 text-sm leading-6 text-white/68">{copy}</p>
                 </div>
               ))}
@@ -262,7 +226,7 @@ export default function Home() {
               ['98%', 'Client Satisfaction']
             ].map(([value, label]) => (
               <div className="md:border-r md:border-white/10 last:border-r-0" key={label}>
-                <p className="font-serif text-4xl text-gold">{value}</p>
+                <p className="font-display text-4xl text-gold">{value}</p>
                 <p className="mt-2 text-xs uppercase tracking-[0.16em] text-white/75">{label}</p>
               </div>
             ))}

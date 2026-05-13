@@ -1,4 +1,77 @@
-/** Viyra.com™ */
-import Link from 'next/link'; import { properties } from '@/lib/mock/data';
-const filters=['Country','City','Area','Budget','Bedrooms','Bathrooms','Property type','Sea view','Mountain view','Marina access','Golf access','Smart home','Pool','Staff quarters','Privacy level','Security level','Garden orientation','Sun exposure','Rental yield potential','Legal readiness','Cultural compatibility','Remote purchase ready','Family suitability','School proximity','Airport proximity'];
-export default function Search(){return <main className='space-y-4'><h2 className='text-2xl'>Luxury Property Search</h2><div className='card'><div className='grid grid-cols-2 md:grid-cols-5 gap-2 text-xs'>{filters.map(f=><span key={f} className='px-2 py-1 rounded bg-navy text-ivory'>{f}</span>)}</div></div><section className='grid md:grid-cols-2 gap-4'>{properties.map(p=><article key={p.id} className='card'><h3>{p.title}</h3><p>{p.city}, {p.country}</p><p>€{p.price.toLocaleString()}</p><p>AI Match: {p.aiMatch}%</p><Link href={`/property/${p.id}`} className='text-gold'>View details</Link></article>)}</section></main>}
+import Link from 'next/link';
+import { PageShell, Panel } from '@/components/layout/SiteChrome';
+import { properties } from '@/lib/mock/data';
+
+const filters = [
+  'Country',
+  'City',
+  'Budget',
+  'Bedrooms',
+  'Property type',
+  'Sea view',
+  'Golf access',
+  'Smart home',
+  'Pool',
+  'Remote purchase ready'
+];
+
+export default function Search() {
+  return (
+    <PageShell
+      eyebrow="Private Property Search"
+      title="Curated homes matched to lifestyle, privacy, and investment goals."
+      description="Explore premium listings through the same quiet, editorial Viyra experience used by buyers, advisors, and international transaction teams."
+    >
+      <Panel className="mb-8 p-6">
+        <div className="grid gap-3 md:grid-cols-5">
+          {filters.map((filter) => (
+            <button
+              className="border border-black/10 bg-porcelain px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.14em] text-taupe transition hover:border-gold hover:text-black"
+              key={filter}
+              type="button"
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+      </Panel>
+
+      <section className="grid gap-6 md:grid-cols-2">
+        {properties.map((property) => (
+          <Panel className="overflow-hidden" key={property.id}>
+            <div className="grid md:grid-cols-[0.9fr_1.1fr]">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85"
+                alt={property.title}
+                className="h-full min-h-64 w-full object-cover"
+              />
+              <div className="p-7">
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                  AI Match {property.aiMatch}%
+                </p>
+                <h2 className="font-display text-3xl">{property.title}</h2>
+                <p className="mt-3 text-sm text-taupe">
+                  {property.city}, {property.country}
+                </p>
+                <p className="mt-5 text-2xl font-semibold">EUR{property.price.toLocaleString()}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {property.features.map((feature) => (
+                    <span className="bg-ivory px-3 py-2 text-xs text-taupe" key={feature.name}>
+                      {feature.name}: {String(feature.value)}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={`/property/${property.id}`}
+                  className="mt-7 inline-flex border border-gold px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-black transition hover:bg-gold"
+                >
+                  View Details
+                </Link>
+              </div>
+            </div>
+          </Panel>
+        ))}
+      </section>
+    </PageShell>
+  );
+}

@@ -12,8 +12,11 @@ export default {
     extend: {
       colors: {
         navy: '#081225',
-        gold: '#C8A25D',
-        ivory: '#F8F6F2'
+        black: '#171717',
+        gold: '#C8A96B',
+        ivory: '#EEE6D8',
+        porcelain: '#F8F4EC',
+        taupe: '#4D463D'
       }
     }
   },

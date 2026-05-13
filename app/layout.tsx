@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   applicationName: 'Viyra.com',
   creator: 'SaaSolutions SL',
   publisher: 'Paradox FZCO',
-  keywords: ['luxury real estate', 'global property', 'AI concierge']
+  keywords: ['luxury real estate', 'global property', 'AI concierge'],
+  icons: {
+    icon: '/viyra/web/favicons/favicon-256.png'
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

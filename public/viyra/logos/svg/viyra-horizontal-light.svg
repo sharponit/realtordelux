@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="520" viewBox="0 0 1800 520">
+        <rect width="1800" height="900" fill="#EEE6D8"/>
+        <g transform="translate(110 75) scale(.52)">
+        <path d="M-125 -20 L-78 -20 L0 160 L-35 160 Z" fill="#C8A96B"/>
+        <path d="M125 -20 L78 -20 L0 160 L35 160 Z" fill="#C8A96B"/>
+        <rect x="-16" y="-170" width="32" height="220" fill="#C8A96B"/>
+        <rect x="32" y="-140" width="26" height="180" fill="#C8A96B" opacity=".9"/>
+        <path d="M-55 60 L0 12 L55 60 L40 82 L0 42 L-40 82 Z" fill="#C8A96B"/>
+        </g>
+        <text x="430" y="255" font-family="Cormorant Garamond, Georgia, serif"
+        font-size="145" letter-spacing="28" fill="#171717">VIYRA</text>
+        <path d="M1050 236 Q1080 205 1125 214 Q1096 233 1070 263 Z" fill="#C8A96B"/>
+        <text x="445" y="340" font-family="Montserrat, Arial, sans-serif"
+        font-size="28" letter-spacing="10"
+        fill="#C8A96B">LUXURY REAL ESTATE, REIMAGINED</text>
+        </svg>
