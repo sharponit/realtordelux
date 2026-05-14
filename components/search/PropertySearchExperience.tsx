@@ -1,15 +1,23 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SearchBar } from '@/components/search/SearchBar';
 import { SearchFilters } from '@/components/search/SearchFilters';
 import { SearchResults } from '@/components/search/SearchResults';
 import { saveSearch, searchProperties, trackSearchEvent } from '@/lib/search/propertySearch';
 import type { PropertySearchFilters, PropertySearchResult, PropertySearchSort } from '@/types/search';
 
-export function PropertySearchExperience() {
-  const [query, setQuery] = useState('');
-  const [filters, setFilters] = useState<PropertySearchFilters>({});
+export function PropertySearchExperience({
+  initialQuery = '',
+  initialFilters = {}
+}: {
+  initialQuery?: string;
+  initialFilters?: PropertySearchFilters;
+}) {
+  const router = useRouter();
+  const [query, setQuery] = useState(initialQuery);
+  const [filters, setFilters] = useState<PropertySearchFilters>(initialFilters);
   const [sort, setSort] = useState<PropertySearchSort>('relevance');
   const [pageNumber, setPageNumber] = useState(1);
   const [results, setResults] = useState<PropertySearchResult[]>([]);
@@ -49,6 +57,35 @@ export function PropertySearchExperience() {
     }
   }
 
+  function updateSearchQuery(value: string) {
+    const trimmedQuery = value.trim();
+    const params = new URLSearchParams();
+
+    if (trimmedQuery) {
+      params.set('q', trimmedQuery);
+    }
+
+    if (filters.listingType) {
+      params.set('listing_type', filters.listingType);
+    }
+
+    if (filters.city) {
+      params.set('city', filters.city);
+    }
+
+    if (filters.country) {
+      params.set('country', filters.country);
+    }
+
+    if (filters.highlightedOnly) {
+      params.set('highlighted', 'true');
+    }
+
+    setQuery(trimmedQuery);
+    setPageNumber(1);
+    router.push(params.toString() ? `/search?${params.toString()}` : '/search');
+  }
+
   return (
     <main className="min-h-screen bg-porcelain text-black">
       <section className="bg-[#080b0f] text-white">
@@ -60,7 +97,7 @@ export function PropertySearchExperience() {
             Search luxury residences by place, lifestyle, and investment intent.
           </h1>
           <div className="mt-9">
-            <SearchBar initialQuery={query} onSearch={(value) => { setQuery(value); setPageNumber(1); }} />
+            <SearchBar initialQuery={query} onSearch={updateSearchQuery} />
           </div>
         </div>
       </section>

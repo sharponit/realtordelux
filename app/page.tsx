@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SocialProfileButtons } from '@/components/common/SocialProfileButtons';
 import { SiteHeader } from '@/components/layout/SiteChrome';
+import { LandingPropertySearch } from '@/components/search/LandingPropertySearch';
 
 const heroImage =
   'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=90';
@@ -36,14 +37,6 @@ const properties = [
     image:
       'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85'
   }
-];
-
-const searchItems = [
-  ['Location', 'Any Location'],
-  ['Property Type', 'Any Type'],
-  ['Price Range', 'Any Price'],
-  ['Beds', 'Any'],
-  ['Baths', 'Any']
 ];
 
 const strengths = [
@@ -91,25 +84,11 @@ export default function Home() {
       </section>
 
       <section className="relative z-20 mx-auto -mt-16 max-w-5xl px-6 lg:px-0">
-        <div className="grid overflow-hidden rounded-sm bg-[#0a0d10] shadow-2xl md:grid-cols-[1.1fr_1.1fr_1.1fr_0.7fr_0.7fr_1fr]">
-          {searchItems.map(([label, value]) => (
-            <button
-              className="border-b border-white/10 px-7 py-6 text-left md:border-b-0 md:border-r"
-              key={label}
-              type="button"
-            >
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/65">
-                {label}
-              </span>
-              <span className="mt-4 flex items-center justify-between text-sm text-white">
-                {value}
-                <span className="text-gold">v</span>
-              </span>
-            </button>
-          ))}
+        <div className="grid gap-3 overflow-visible rounded-sm bg-[#0a0d10] p-4 shadow-2xl md:grid-cols-[1fr_auto] md:items-start">
+          <LandingPropertySearch />
           <Link
-            href="/highlighted-properties"
-            className="m-6 flex items-center justify-center gap-3 bg-gold px-7 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#b8914b]"
+            href="/search?highlighted=true"
+            className="flex h-20 items-center justify-center gap-3 border border-gold/50 px-7 text-xs font-bold uppercase tracking-[0.12em] text-gold transition hover:bg-gold hover:text-black md:h-[80px]"
           >
             <span className="text-base">O</span>
             Highlights
@@ -128,7 +107,7 @@ export default function Home() {
             </h2>
           </div>
           <Link
-            href="/highlighted-properties"
+            href="/search?highlighted=true"
             className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#17110d] hover:text-gold md:inline-flex"
           >
             View Highlights -&gt;

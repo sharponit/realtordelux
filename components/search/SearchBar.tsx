@@ -1,16 +1,26 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { SearchAutocomplete } from '@/components/search/SearchAutocomplete';
 
 export function SearchBar({
   initialQuery,
-  onSearch
+  onSearch,
+  isLoading = false,
+  validationMessage = '',
+  buttonLabel = 'Search'
 }: {
   initialQuery?: string;
   onSearch: (query: string) => void;
+  isLoading?: boolean;
+  validationMessage?: string;
+  buttonLabel?: string;
 }) {
   const [query, setQuery] = useState(initialQuery || '');
+
+  useEffect(() => {
+    setQuery(initialQuery || '');
+  }, [initialQuery]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,14 +41,19 @@ export function SearchBar({
         </div>
         <button
           className="h-14 bg-gold px-8 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#b99655]"
+          disabled={isLoading}
           type="submit"
         >
-          Search
+          {isLoading ? 'Searching...' : buttonLabel}
         </button>
       </div>
-      <p className="mt-3 text-xs leading-6 text-white/52">
-        Example: beachfront villa in Marbella or privacy-focused mansion near golf
-      </p>
+      {validationMessage ? (
+        <p className="mt-3 text-xs leading-6 text-gold">{validationMessage}</p>
+      ) : (
+        <p className="mt-3 text-xs leading-6 text-white/52">
+          Example: beachfront villa in Marbella or privacy-focused mansion near golf
+        </p>
+      )}
     </form>
   );
 }
