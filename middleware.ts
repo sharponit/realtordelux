@@ -11,6 +11,7 @@ const publicPaths = [
   '/selling',
   '/new-developments',
   '/highlighted-properties',
+  '/search',
   '/login',
   '/auth/callback'
 ];
