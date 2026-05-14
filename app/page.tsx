@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SocialProfileButtons } from '@/components/common/SocialProfileButtons';
 import { SiteHeader } from '@/components/layout/SiteChrome';
 
 const heroImage =
@@ -136,7 +137,10 @@ export default function Home() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {properties.map((property) => (
-            <article className="group bg-white shadow-[0_18px_60px_rgba(8,18,37,0.08)]" key={property.title}>
+            <article
+              className="group bg-white shadow-[0_18px_60px_rgba(8,18,37,0.08)]"
+              key={property.title}
+            >
               <div className="relative aspect-[1.38] overflow-hidden">
                 <img
                   src={property.image}
@@ -146,7 +150,10 @@ export default function Home() {
                 <span className="absolute left-4 top-4 bg-[#07111f] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
                   For Sale
                 </span>
-                <span className="absolute right-4 top-4 grid h-8 w-8 place-items-center" aria-hidden="true">
+                <span
+                  className="absolute right-4 top-4 grid h-8 w-8 place-items-center"
+                  aria-hidden="true"
+                >
                   <span className="h-4 w-4 rotate-45 border-b-2 border-r-2 border-white" />
                 </span>
               </div>
@@ -156,7 +163,9 @@ export default function Home() {
                     <h3 className="font-display text-xl text-[#17110d]">{property.title}</h3>
                     <p className="mt-1 text-sm text-[#6e685f]">{property.location}</p>
                   </div>
-                  <p className="shrink-0 text-sm font-semibold text-[#17110d]">{property.price}</p>
+                  <p className="shrink-0 text-sm font-semibold text-[#17110d]">
+                    {property.price}
+                  </p>
                 </div>
                 <div className="mt-6 grid grid-cols-3 gap-3 text-xs text-[#5d554c]">
                   <span>{property.beds} Beds</span>
@@ -232,10 +241,13 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="border-t border-white/10 px-6 py-5 text-center text-[8px] tracking-[0.04em] text-white/35 sm:text-[11px] lg:px-10">
-          <p className="mx-auto max-w-2xl">
-            Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
-          </p>
+        <div className="border-t border-white/10 px-6 py-5 text-[8px] tracking-[0.04em] text-white/35 sm:text-[11px] lg:px-10">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 md:flex-row md:justify-between">
+            <p className="text-center md:text-left">
+              Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
+            </p>
+            <SocialProfileButtons variant="compact" showLabels={false} className="text-white/45" />
+          </div>
         </div>
       </section>
     </main>
