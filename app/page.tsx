@@ -81,10 +81,10 @@ export default function Home() {
               Your vision, our expertise.
             </p>
             <Link
-              href="/search"
+              href="/login"
               className="mt-9 inline-flex bg-gold px-8 py-5 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-[0_18px_40px_rgba(0,0,0,0.22)] transition hover:bg-[#b8914b]"
             >
-              Explore Properties
+              Login / Get Started
             </Link>
           </div>
         </div>
@@ -108,11 +108,11 @@ export default function Home() {
             </button>
           ))}
           <Link
-            href="/search"
+            href="/highlighted-properties"
             className="m-6 flex items-center justify-center gap-3 bg-gold px-7 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#b8914b]"
           >
             <span className="text-base">O</span>
-            Search
+            Highlights
           </Link>
         </div>
       </section>
@@ -128,10 +128,10 @@ export default function Home() {
             </h2>
           </div>
           <Link
-            href="/search"
+            href="/highlighted-properties"
             className="hidden text-xs font-semibold uppercase tracking-[0.14em] text-[#17110d] hover:text-gold md:inline-flex"
           >
-            View All Properties -&gt;
+            View Highlights -&gt;
           </Link>
         </div>
 
@@ -218,11 +218,31 @@ export default function Home() {
             </div>
 
             <Link
-              href="/markets"
+              href="/about"
               className="mt-10 inline-flex w-fit border border-gold px-7 py-4 text-xs font-bold uppercase tracking-[0.14em] text-gold transition hover:bg-gold hover:text-navy"
             >
               Learn More About Us
             </Link>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 bg-[#080b0f]">
+          <div className="mx-auto grid max-w-7xl gap-3 px-6 py-8 sm:grid-cols-2 lg:grid-cols-5 lg:px-10">
+            {[
+              ['Buy', '/buying'],
+              ['Sell', '/selling'],
+              ['Rent', '/renting'],
+              ['Explore New Developments', '/new-developments'],
+              ['Join as Professional', '/login']
+            ].map(([label, href]) => (
+              <Link
+                className="border border-white/10 px-5 py-4 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white/75 transition hover:border-gold hover:text-gold"
+                href={href as any}
+                key={label}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
 

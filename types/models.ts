@@ -1,8 +1,8 @@
-/**
- * Viyra.com™
+﻿/**
+ * Viyra.comâ„¢
  * Developed by SaaSolutions SL
  * Intellectual Property owned by Paradox FZCO
- * © 2026 Paradox FZCO. All rights reserved.
+ * Â© 2026 Paradox FZCO. All rights reserved.
  */
 export type Role = 'buyer'|'seller'|'realtor'|'photographer'|'lawyer'|'notary'|'firm_owner'|'firm_admin'|'admin'|'super_admin';
 export interface User { id:string; name:string; role:Role; language:string; market:string }

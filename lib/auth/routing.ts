@@ -1,7 +1,8 @@
-import { roleDashboardPath, type OnboardingStatus, type UserRole } from './roles';
+import { getPrimaryRole, roleDashboardPath, type OnboardingStatus, type UserRole } from './roles';
 
 export interface RoutingProfile {
   role: UserRole;
+  roles?: UserRole[];
   onboarding_status: OnboardingStatus;
 }
 
@@ -14,5 +15,5 @@ export function getPostLoginPath(profile: RoutingProfile | null) {
     return '/onboarding';
   }
 
-  return roleDashboardPath[profile.role];
+  return roleDashboardPath[getPrimaryRole(profile.roles?.length ? profile.roles : [profile.role])];
 }

@@ -1,4 +1,4 @@
-import { PageShell, Panel } from '@/components/layout/SiteChrome';
+﻿import { PageShell, Panel } from '@/components/layout/SiteChrome';
 import { agentActions } from '@/lib/mock/data';
 
 export default function AgentCenter() {

@@ -1,8 +1,11 @@
 import type { UserRole } from './roles';
 
 export const permissions = {
+  general: ['profile:own', 'messages:own'],
   buyer: ['properties:read', 'offers:create', 'documents:own', 'messages:own'],
   seller: ['properties:own', 'offers:read', 'documents:own', 'messages:own'],
+  renter: ['properties:read', 'offers:create', 'documents:own', 'messages:own'],
+  investor: ['properties:read', 'offers:create', 'documents:own', 'messages:own'],
   realtor: ['listings:manage', 'leads:manage', 'clients:manage', 'offers:coordinate', 'firm:read'],
   photographer: ['photography:profile', 'photography:jobs', 'photography:uploads', 'photography:pricing'],
   lawyer: ['cases:manage', 'clients:read', 'documents:review', 'compliance:review'],
@@ -17,6 +20,6 @@ export function can(role: UserRole, permission: string) {
   return permissions[role].includes('*') || permissions[role].includes(permission);
 }
 
-export function canAccessRole(currentRole: UserRole, targetRole: UserRole) {
-  return currentRole === 'super_admin' || currentRole === targetRole;
+export function canAccessRole(currentRole: UserRole, targetRole: UserRole, roles: readonly UserRole[] = [currentRole]) {
+  return currentRole === 'super_admin' || roles.includes(targetRole);
 }

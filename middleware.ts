@@ -2,25 +2,28 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import type { Database } from '@/lib/supabase/types';
 
-const protectedPrefixes = [
-  '/dashboard',
-  '/profile',
-  '/onboarding',
-  '/firm',
-  '/admin',
-  '/settings',
-  '/realtor',
-  '/brokerage',
-  '/seller/onboarding/invite'
+const publicPaths = [
+  '/',
+  '/about',
+  '/contact',
+  '/buying',
+  '/renting',
+  '/selling',
+  '/new-developments',
+  '/highlighted-properties',
+  '/login',
+  '/auth/callback'
 ];
+
+const publicPrefixes = ['/api/health'];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
-  const isProtected = protectedPrefixes.some((prefix) => request.nextUrl.pathname.startsWith(prefix));
+  const pathname = request.nextUrl.pathname;
+  const isPublicPath = publicPaths.includes(pathname) || publicPrefixes.some((prefix) => pathname.startsWith(prefix));
   const isPublicSellerInviteLanding =
-    request.nextUrl.pathname.startsWith('/seller/onboarding/invite/') &&
-    !request.nextUrl.pathname.endsWith('/start');
-  const shouldProtect = isProtected && !isPublicSellerInviteLanding;
+    pathname.startsWith('/seller/onboarding/invite/') && !pathname.endsWith('/start');
+  const shouldProtect = !isPublicPath && !isPublicSellerInviteLanding;
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const hasSupabaseConfig = Boolean(supabaseUrl && supabaseAnonKey);
@@ -61,14 +64,30 @@ export async function middleware(request: NextRequest) {
     if (shouldProtect && !user) {
       const url = request.nextUrl.clone();
       url.pathname = '/login';
-      url.searchParams.set('next', request.nextUrl.pathname);
+      url.searchParams.set('next', `${request.nextUrl.pathname}${request.nextUrl.search}`);
       return NextResponse.redirect(url);
     }
 
-    if (request.nextUrl.pathname === '/login' && user) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/dashboard';
-      return NextResponse.redirect(url);
+    if (user) {
+      const { data: profile } = await (supabase as any)
+        .from('profiles')
+        .select('role,onboarding_status')
+        .eq('user_id', user.id)
+        .single();
+
+      if (pathname === '/login') {
+        const url = request.nextUrl.clone();
+        url.pathname = profile?.onboarding_status === 'complete' ? '/dashboard' : '/onboarding';
+        url.search = '';
+        return NextResponse.redirect(url);
+      }
+
+      if (shouldProtect && pathname !== '/onboarding' && profile?.onboarding_status !== 'complete') {
+        const url = request.nextUrl.clone();
+        url.pathname = '/onboarding';
+        url.search = '';
+        return NextResponse.redirect(url);
+      }
     }
   } catch {
     if (shouldProtect) {

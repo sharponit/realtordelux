@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { PageShell, Panel } from '@/components/layout/SiteChrome';
 import { properties } from '@/lib/mock/data';
 

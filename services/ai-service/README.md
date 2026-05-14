@@ -1,4 +1,4 @@
-# VIYRA AI Service
+﻿# VIYRA AI Service
 
 Railway-deployable AI microservice for the VIYRA luxury real-estate platform. It runs a small local/open-source model through Ollama and exposes protected JSON APIs for the Vercel frontend and future backend workflows.
 

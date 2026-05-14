@@ -6,11 +6,18 @@ export interface MenuItem {
 }
 
 export const roleMenus: Record<UserRole, MenuItem[]> = {
+  general: [
+    { label: 'Dashboard', href: '/dashboard/general' },
+    { label: 'Properties', href: '/search' },
+    { label: 'Messages', href: '/messages' },
+    { label: 'Profile', href: '/profile/general' }
+  ],
   buyer: [
     { label: 'Dashboard', href: '/dashboard/buyer' },
+    { label: 'Matches', href: '/matches' },
     { label: 'Saved Properties', href: '/saved-properties' },
-    { label: 'AI Match Preferences', href: '/ai-concierge' },
     { label: 'Offers', href: '/offers' },
+    { label: 'Concierge', href: '/concierge' },
     { label: 'Documents', href: '/documents' },
     { label: 'Messages', href: '/messages' },
     { label: 'Profile', href: '/profile/buyer' }
@@ -18,50 +25,62 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
   seller: [
     { label: 'Dashboard', href: '/dashboard/seller' },
     { label: 'My Properties', href: '/my-properties' },
-    { label: 'Offers Received', href: '/offers' },
+    { label: 'Listing Progress', href: '/listing-progress' },
+    { label: 'Offers', href: '/offers' },
+    { label: 'Invite Realtor', href: '/realtor/invite-seller' },
     { label: 'Documents', href: '/documents' },
     { label: 'Messages', href: '/messages' },
     { label: 'Profile', href: '/profile/seller' }
+  ],
+  renter: [
+    { label: 'Dashboard', href: '/dashboard/renter' },
+    { label: 'Matches', href: '/matches' },
+    { label: 'Saved Rentals', href: '/saved-properties' },
+    { label: 'Offers', href: '/offers' },
+    { label: 'Concierge', href: '/concierge' },
+    { label: 'Profile', href: '/profile/renter' }
+  ],
+  investor: [
+    { label: 'Dashboard', href: '/dashboard/investor' },
+    { label: 'Opportunities', href: '/matches' },
+    { label: 'Saved Assets', href: '/saved-properties' },
+    { label: 'Offers', href: '/offers' },
+    { label: 'Profile', href: '/profile/investor' }
   ],
   realtor: [
     { label: 'Dashboard', href: '/dashboard/realtor' },
     { label: 'Invite Seller', href: '/realtor/invite-seller' },
     { label: 'Listings', href: '/listings' },
     { label: 'Review Listings', href: '/realtor/listings/review' },
-    { label: 'Leads', href: '/leads' },
     { label: 'Clients', href: '/clients' },
-    { label: 'Viewings', href: '/viewings' },
-    { label: 'Offers', href: '/offers' },
-    { label: 'Documents', href: '/documents' },
+    { label: 'Lawyer Recommendations', href: '/lawyer-recommendations' },
+    { label: 'Photographer Booking', href: '/photography/assign' },
+    { label: 'Commission Tracking', href: '/brokerage/invitations' },
     { label: 'Messages', href: '/messages' },
     { label: 'Firm', href: '/firm' },
     { label: 'Profile', href: '/profile/realtor' }
   ],
   photographer: [
     { label: 'Dashboard', href: '/dashboard/photographer' },
-    { label: 'Incoming Requests', href: '/photography/jobs' },
-    { label: 'Scheduled Shoots', href: '/photography/scheduled' },
-    { label: 'Uploads', href: '/photography/jobs/demo/upload' },
-    { label: 'Pricing', href: '/photographer/pricing' },
+    { label: 'Jobs', href: '/photography/jobs' },
     { label: 'Portfolio', href: '/photographer/portfolio' },
-    { label: 'Earnings', href: '/photographer/earnings' },
+    { label: 'Pricing', href: '/photographer/pricing' },
+    { label: 'Availability', href: '/photographer/availability' },
     { label: 'Profile', href: '/profile/photographer' }
   ],
   lawyer: [
     { label: 'Dashboard', href: '/dashboard/lawyer' },
-    { label: 'Cases', href: '/cases' },
-    { label: 'Clients', href: '/clients' },
-    { label: 'Documents', href: '/documents' },
-    { label: 'Compliance', href: '/compliance' },
+    { label: 'Legal Files', href: '/legal-files' },
+    { label: 'Due Diligence', href: '/due-diligence' },
+    { label: 'Contract Review', href: '/contract-review' },
     { label: 'Messages', href: '/messages' },
     { label: 'Profile', href: '/profile/lawyer' }
   ],
   notary: [
     { label: 'Dashboard', href: '/dashboard/notary' },
-    { label: 'Transactions', href: '/transactions' },
-    { label: 'Appointments', href: '/appointments' },
-    { label: 'Documents', href: '/documents' },
-    { label: 'Verification', href: '/verification' },
+    { label: 'Notary Files', href: '/notary-files' },
+    { label: 'Transfer Appointments', href: '/appointments' },
+    { label: 'Signing Workflow', href: '/signing-workflow' },
     { label: 'Messages', href: '/messages' },
     { label: 'Profile', href: '/profile/notary' }
   ],

@@ -13,14 +13,14 @@ export default async function OnboardingPage() {
       <section className="border-y border-black/10 bg-ivory/55">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">
-            Professional Onboarding
+            Guided Onboarding
           </p>
           <h1 className="font-display max-w-4xl text-5xl leading-[1.05] md:text-6xl">
             Set up your private Viyra profile.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-taupe">
-            Choose your role, complete your profile, verify professional status, or attach yourself
-            to a firm under license-seat governance.
+            Answer a few fixed questions so Viyra can prepare the right private workspace. This
+            flow works without AI and can be saved at any time.
           </p>
         </div>
       </section>

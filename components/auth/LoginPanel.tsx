@@ -1,22 +1,25 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { signInWithMagicLink, signInWithOAuth, signInWithPassword } from '@/lib/supabase/auth';
+import { useRouter } from 'next/navigation';
+import { signInWithOAuth, signInWithPassword, signInWithSecureLink } from '@/lib/supabase/auth';
 
 const oauthButtons = [
   { label: 'Continue with Google', provider: 'google' },
   { label: 'Continue with Apple', provider: 'apple' },
-  { label: 'Continue with Microsoft', provider: 'azure' }
+  { label: 'Continue with LinkedIn', provider: 'linkedin_oidc' }
 ] as const;
 
 type LoginPanelProps = {
   authConfigMissing?: boolean;
+  nextPath?: string;
 };
 
-export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
+export function LoginPanel({ authConfigMissing = false, nextPath }: LoginPanelProps) {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [mode, setMode] = useState<'password' | 'magic'>('password');
+  const [mode, setMode] = useState<'password' | 'secure_link'>('secure_link');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +29,9 @@ export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
     setMessage('');
 
     const result =
-      mode === 'magic' ? await signInWithMagicLink(email) : await signInWithPassword(email, password);
+      mode === 'secure_link'
+        ? await signInWithSecureLink(email, nextPath)
+        : await signInWithPassword(email, password);
 
     setIsLoading(false);
 
@@ -35,17 +40,19 @@ export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
       return;
     }
 
-    setMessage(
-      mode === 'magic'
-        ? 'Secure magic link sent. Please check your email.'
-        : 'Login successful. Redirecting securely...'
-    );
+    if (mode === 'secure_link') {
+      setMessage("We'll send you a secure login link.");
+      return;
+    }
+
+    setMessage('Login successful. Redirecting securely...');
+    router.push((nextPath || '/dashboard') as any);
   }
 
-  async function handleOAuth(provider: 'google' | 'apple' | 'azure') {
+  async function handleOAuth(provider: 'google' | 'apple' | 'linkedin_oidc') {
     setIsLoading(true);
     setMessage('');
-    const { error } = await signInWithOAuth(provider);
+    const { error } = await signInWithOAuth(provider, nextPath);
 
     if (error) {
       setMessage(error.message);
@@ -101,11 +108,11 @@ export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
           Email Login
         </button>
         <button
-          className={`px-4 py-3 ${mode === 'magic' ? 'bg-black text-white' : 'bg-white text-black'}`}
-          onClick={() => setMode('magic')}
+          className={`px-4 py-3 ${mode === 'secure_link' ? 'bg-black text-white' : 'bg-white text-black'}`}
+          onClick={() => setMode('secure_link')}
           type="button"
         >
-          Magic Link
+          Email Link
         </button>
       </div>
 
@@ -144,15 +151,14 @@ export function LoginPanel({ authConfigMissing = false }: LoginPanelProps) {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? 'Securing access...' : mode === 'magic' ? 'Send Magic Link' : 'Continue Securely'}
+          {isLoading ? 'Securing access...' : mode === 'secure_link' ? 'Continue via Email' : 'Continue Securely'}
         </button>
       </form>
 
       {message ? <p className="mt-5 text-center text-sm text-taupe">{message}</p> : null}
 
       <p className="mt-7 text-center text-xs leading-6 text-black/45">
-        No entertainment social logins. Viyra uses professional identity providers and secure email
-        authentication only.
+        Viyra uses professional identity providers and secure email authentication only.
       </p>
     </div>
   );

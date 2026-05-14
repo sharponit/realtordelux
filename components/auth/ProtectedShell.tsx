@@ -18,6 +18,7 @@ export function ProtectedShell({
   children: ReactNode;
 }) {
   const menu = getMenuForRole(profile.role);
+  const roles = profile.roles?.length ? profile.roles : [profile.role];
 
   return (
     <main className="min-h-screen bg-porcelain text-black">
@@ -33,6 +34,21 @@ export function ProtectedShell({
             </div>
           </div>
           <nav className="flex gap-2 overflow-x-auto pb-1">
+            {roles.length > 1
+              ? roles.map((role) => (
+                  <Link
+                    className={`shrink-0 border px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] transition ${
+                      profile.role === role
+                        ? 'border-gold bg-gold/10 text-black'
+                        : 'border-black/10 bg-white text-black hover:border-gold hover:text-gold'
+                    }`}
+                    href={`/dashboard/${role.replaceAll('_', '-')}` as Route}
+                    key={role}
+                  >
+                    {roleLabels[role]}
+                  </Link>
+                ))
+              : null}
             {menu.map((item) => (
               <Link
                 className="shrink-0 border border-black/10 bg-white px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-black transition hover:border-gold hover:text-gold"
@@ -67,6 +83,9 @@ export function ProfileSummary({ profile }: { profile: ProfileRow }) {
       <div className="mt-6 grid gap-3 text-sm text-taupe md:grid-cols-2">
         <p>Email: <span className="font-semibold text-black">{profile.email || 'Pending'}</span></p>
         <p>Role: <span className="font-semibold text-black">{roleLabels[profile.role]}</span></p>
+        {profile.roles && profile.roles.length > 1 ? (
+          <p>Roles: <span className="font-semibold text-black">{profile.roles.map((role) => roleLabels[role]).join(', ')}</span></p>
+        ) : null}
         <p>Country: <span className="font-semibold text-black">{profile.country || 'Not set'}</span></p>
         <p>Language: <span className="font-semibold text-black">{profile.preferred_language}</span></p>
         <p>Onboarding: <span className="font-semibold text-black">{profile.onboarding_status}</span></p>

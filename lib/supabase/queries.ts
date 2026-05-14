@@ -1,4 +1,4 @@
-import { createSupabaseBrowserClient } from './client';
+﻿import { createSupabaseBrowserClient } from './client';
 import { createSupabaseServerClient } from './server';
 
 export const listProperties = async () =>

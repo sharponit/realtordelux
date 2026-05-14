@@ -9,7 +9,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ id:
     <PageShell
       eyebrow="Private Listing"
       title={property.title}
-      description="A premium property view centered on lifestyle fit, AI match quality, legal readiness, and transaction confidence."
+      description="A premium property view centered on lifestyle fit, legal readiness, and transaction confidence."
     >
       <div className="grid gap-7 lg:grid-cols-[1.2fr_0.8fr]">
         <Panel className="overflow-hidden">
@@ -33,11 +33,12 @@ export default async function PropertyDetail({ params }: { params: Promise<{ id:
         <div className="space-y-6">
           <Panel className="bg-[#171717] p-7 text-white">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-              AI Match Score
+              Private Match Profile
             </p>
-            <p className="font-display text-7xl text-gold">{property.aiMatch}</p>
+            <p className="font-display text-5xl text-gold">{property.aiMatch}</p>
             <p className="mt-4 text-sm leading-7 text-white/70">
-              Lifestyle 91. Investment 90. Legal readiness 88. Cultural compatibility 86.
+              Lifestyle, investment, legal readiness, and cultural preferences are refined after
+              secure onboarding.
             </p>
           </Panel>
           <Panel className="p-7">
@@ -51,9 +52,9 @@ export default async function PropertyDetail({ params }: { params: Promise<{ id:
               <GoldButton href="/transactions">Make Offer</GoldButton>
               <a
                 className="inline-flex border border-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] text-black transition hover:bg-gold"
-                href="/ai-concierge"
+                href="/login"
               >
-                Ask AI Concierge
+                Request Concierge
               </a>
             </div>
           </Panel>

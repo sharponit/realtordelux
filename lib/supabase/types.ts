@@ -10,6 +10,7 @@ export interface ProfileRow {
   phone: string | null;
   avatar_url: string | null;
   role: UserRole;
+  roles?: UserRole[];
   onboarding_status: OnboardingStatus;
   preferred_language: string;
   country: string | null;
@@ -345,3 +346,4 @@ export interface Database {
     };
   };
 }
+/** Viyra.com™ */

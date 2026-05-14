@@ -8,6 +8,7 @@ type LoginPageProps = {
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const params = await searchParams;
   const authConfigMissing = params?.auth_config === 'missing';
+  const nextParam = Array.isArray(params?.next) ? params?.next[0] : params?.next;
 
   return (
     <main className="grid min-h-screen bg-porcelain text-black lg:grid-cols-[0.9fr_1.1fr]">
@@ -32,7 +33,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
       <section className="flex items-center justify-center bg-[#171717] px-6 py-10">
         <div className="w-full max-w-md">
-          <LoginPanel authConfigMissing={authConfigMissing} />
+          <LoginPanel authConfigMissing={authConfigMissing} nextPath={nextParam} />
         </div>
       </section>
     </main>

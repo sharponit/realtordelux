@@ -1,4 +1,4 @@
-import { GoldButton, PageShell, Panel } from '@/components/layout/SiteChrome';
+﻿import { GoldButton, PageShell, Panel } from '@/components/layout/SiteChrome';
 import { matchProperty } from '@/lib/ai/ai-client';
 
 const prompts = [

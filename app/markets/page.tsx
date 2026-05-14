@@ -1,4 +1,4 @@
-import { PageShell, Panel } from '@/components/layout/SiteChrome';
+﻿import { PageShell, Panel } from '@/components/layout/SiteChrome';
 import { markets } from '@/lib/config/markets';
 
 export default function Markets() {

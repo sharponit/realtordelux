@@ -1,8 +1,8 @@
-/**
- * Viyra.com™
+﻿/**
+ * Viyra.comâ„¢
  * Developed by SaaSolutions SL
  * Intellectual Property owned by Paradox FZCO
- * © 2026 Paradox FZCO. All rights reserved.
+ * Â© 2026 Paradox FZCO. All rights reserved.
  */
 import type { Config } from 'tailwindcss';
 

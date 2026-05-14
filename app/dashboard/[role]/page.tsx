@@ -4,9 +4,12 @@ import { roleDashboardPath, type UserRole } from '@/lib/auth/roles';
 import { requireRoleRoute } from '@/lib/auth/session';
 
 const dashboardCards: Record<UserRole, string[]> = {
-  buyer: ['Saved properties', 'AI match preferences', 'Offers', 'Documents'],
-  seller: ['My properties', 'Offers received', 'Documents', 'Messages'],
-  realtor: ['Invite Seller', 'Seller onboarding progress', 'Listings pending review', 'Leads', 'Clients', 'Commission attribution'],
+  general: ['Explore opportunities', 'Market preferences', 'Messages', 'Profile'],
+  buyer: ['Matches', 'Saved properties', 'Offers', 'Concierge'],
+  seller: ['My properties', 'Listing progress', 'Offers', 'Invite Realtor'],
+  renter: ['Rental matches', 'Saved rentals', 'Offers', 'Concierge'],
+  investor: ['Investment opportunities', 'Saved assets', 'ROI preferences', 'Offers'],
+  realtor: ['Clients', 'Listings', 'Seller Invitations', 'Lawyer Recommendations', 'Photographer Booking', 'Commission Tracking'],
   photographer: ['Incoming job requests', 'Accepted jobs', 'Scheduled shoots', 'Photo uploads', 'Pricing settings', 'Portfolio management', 'Verification status', 'Earnings overview'],
   lawyer: ['Cases', 'Clients', 'Documents', 'Compliance'],
   notary: ['Transactions', 'Appointments', 'Documents', 'Verification'],
@@ -40,8 +43,8 @@ export default async function RoleDashboard({ params }: { params: Promise<{ role
               </p>
               <h2 className="font-display text-2xl">{item}</h2>
               <p className="mt-3 text-sm leading-6 text-taupe">
-                Professional workflow placeholder ready for future AI, KYC, signing, payment, and
-                legal modules.
+                Concierge workflow placeholder ready for verification, signing, payment, and
+                transaction modules.
               </p>
             </div>
           ))}

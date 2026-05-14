@@ -1,6 +1,9 @@
 export const USER_ROLES = [
+  'general',
   'buyer',
   'seller',
+  'renter',
+  'investor',
   'realtor',
   'photographer',
   'lawyer',
@@ -22,8 +25,11 @@ export const FIRM_ROLES = ['firm_owner', 'firm_admin'] as const satisfies readon
 export const PLATFORM_ROLES = ['admin', 'super_admin'] as const satisfies readonly UserRole[];
 
 export const roleLabels: Record<UserRole, string> = {
+  general: 'General',
   buyer: 'Buyer',
   seller: 'Seller',
+  renter: 'Renter',
+  investor: 'Investor',
   realtor: 'Realtor',
   photographer: 'Photographer',
   lawyer: 'Lawyer',
@@ -35,8 +41,11 @@ export const roleLabels: Record<UserRole, string> = {
 };
 
 export const roleDashboardPath: Record<UserRole, string> = {
+  general: '/dashboard/general',
   buyer: '/dashboard/buyer',
   seller: '/dashboard/seller',
+  renter: '/dashboard/renter',
+  investor: '/dashboard/investor',
   realtor: '/dashboard/realtor',
   photographer: '/dashboard/photographer',
   lawyer: '/dashboard/lawyer',
@@ -61,4 +70,24 @@ export function isProfessionalRole(role: UserRole) {
 
 export function isPlatformRole(role: UserRole) {
   return role === 'admin' || role === 'super_admin';
+}
+
+export const rolePriority: UserRole[] = [
+  'admin',
+  'super_admin',
+  'realtor',
+  'seller',
+  'buyer',
+  'investor',
+  'lawyer',
+  'notary',
+  'photographer',
+  'renter',
+  'general',
+  'firm_owner',
+  'firm_admin'
+];
+
+export function getPrimaryRole(roles: readonly UserRole[]) {
+  return rolePriority.find((role) => roles.includes(role)) || roles[0] || 'general';
 }

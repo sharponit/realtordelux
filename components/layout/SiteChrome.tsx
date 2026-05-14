@@ -4,12 +4,12 @@ import type { ReactNode } from 'react';
 import { SocialProfileButtons } from '@/components/common/SocialProfileButtons';
 
 const navItems = [
-  ['Properties', '/search'],
-  ['Concierge', '/ai-concierge'],
-  ['Dashboard', '/dashboard'],
-  ['Transactions', '/transactions'],
-  ['Documents', '/documents'],
-  ['Markets', '/markets']
+  ['Buying', '/buying'],
+  ['Renting', '/renting'],
+  ['Selling', '/selling'],
+  ['New Developments', '/new-developments'],
+  ['About', '/about'],
+  ['Contact', '/contact']
 ] satisfies ReadonlyArray<readonly [string, Route]>;
 
 export function ViyraLogo({ light = false }: { light?: boolean }) {
@@ -57,14 +57,14 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
         ))}
       </nav>
       <Link
-        href="/ai-concierge"
+        href="/login"
         className={`hidden border px-6 py-3 text-[11px] font-bold uppercase tracking-[0.16em] transition md:inline-flex ${
           light
             ? 'border-gold text-gold hover:bg-gold hover:text-black'
             : 'border-gold text-black hover:bg-gold hover:text-black'
         }`}
       >
-        Book Consultation
+        Login / Get Started
       </Link>
     </header>
   );
