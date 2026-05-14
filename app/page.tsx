@@ -84,11 +84,11 @@ export default function Home() {
       </section>
 
       <section className="relative z-20 mx-auto -mt-16 max-w-5xl px-6 lg:px-0">
-        <div className="grid gap-3 overflow-visible rounded-sm bg-[#0a0d10] p-4 shadow-2xl md:grid-cols-[1fr_auto] md:items-start">
+        <div className="grid gap-3 overflow-visible rounded-sm bg-[#0a0d10] p-4 shadow-2xl">
           <LandingPropertySearch />
           <Link
             href="/search?highlighted=true"
-            className="flex h-20 items-center justify-center gap-3 border border-gold/50 px-7 text-xs font-bold uppercase tracking-[0.12em] text-gold transition hover:bg-gold hover:text-black md:h-[80px]"
+            className="flex min-h-14 items-center justify-center gap-3 border border-gold/50 px-7 text-xs font-bold uppercase tracking-[0.12em] text-gold transition hover:bg-gold hover:text-black"
           >
             <span className="text-base">O</span>
             Highlights

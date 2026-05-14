@@ -21,13 +21,45 @@ function normalizeListingType(value: string | undefined): ListingType | undefine
   return undefined;
 }
 
+function numericParam(value: string | undefined) {
+  if (!value) {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function normalizeLifestyle(value: string | undefined) {
+  const lifestyleMap: Record<string, string> = {
+    'Sea View': 'Sea view',
+    Beachfront: 'Beachfront',
+    'Golf Front': 'Golf front',
+    'Gated Community': 'Gated community',
+    'Private Pool': 'Pool',
+    'Smart Home': 'Smart home',
+    'Golden Visa Eligible': 'Golden visa eligible',
+    'Crypto Accepted': 'Crypto accepted',
+    'High Rental Yield': 'High rental yield',
+    'Privacy Focused': 'Privacy focused'
+  };
+
+  return value ? lifestyleMap[value] || value : undefined;
+}
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
   const initialQuery = firstParam(params?.q) || '';
+  const lifestyle = normalizeLifestyle(firstParam(params?.lifestyle));
   const initialFilters: PropertySearchFilters = {
     listingType: normalizeListingType(firstParam(params?.listing_type)),
     city: firstParam(params?.city),
+    region: firstParam(params?.region),
     country: firstParam(params?.country),
+    propertyType: firstParam(params?.property_type),
+    minPrice: numericParam(firstParam(params?.min_price)),
+    maxPrice: numericParam(firstParam(params?.max_price)),
+    lifestyleTags: lifestyle ? [lifestyle] : undefined,
     highlightedOnly: firstParam(params?.highlighted) === 'true'
   };
 

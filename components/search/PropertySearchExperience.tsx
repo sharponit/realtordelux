@@ -77,6 +77,26 @@ export function PropertySearchExperience({
       params.set('country', filters.country);
     }
 
+    if (filters.region) {
+      params.set('region', filters.region);
+    }
+
+    if (filters.propertyType) {
+      params.set('property_type', filters.propertyType);
+    }
+
+    if (filters.minPrice) {
+      params.set('min_price', String(filters.minPrice));
+    }
+
+    if (filters.maxPrice) {
+      params.set('max_price', String(filters.maxPrice));
+    }
+
+    if (filters.lifestyleTags?.[0]) {
+      params.set('lifestyle', filters.lifestyleTags[0]);
+    }
+
     if (filters.highlightedOnly) {
       params.set('highlighted', 'true');
     }
