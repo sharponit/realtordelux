@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Route } from 'next';
 import type { ReactNode } from 'react';
+import { SocialProfileButtons } from '@/components/common/SocialProfileButtons';
 
 const navItems = [
   ['Properties', '/search'],
@@ -72,7 +73,7 @@ export function SiteHeader({ light = false }: { light?: boolean }) {
 export function SiteFooter() {
   return (
     <footer className="border-t border-black/10 bg-[#171717] text-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 md:grid-cols-[auto_1fr_auto] md:items-center lg:px-10">
         <ViyraLogo light />
         <div className="max-w-xl text-sm leading-6 text-white/65">
           <p>
@@ -83,6 +84,11 @@ export function SiteFooter() {
             Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
           </p>
         </div>
+        <SocialProfileButtons
+          variant="footer"
+          showLabels={false}
+          className="text-white md:justify-end"
+        />
       </div>
     </footer>
   );

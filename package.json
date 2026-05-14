@@ -2,10 +2,10 @@
   "name": "luxary-realtor",
   "version": "0.1.0",
   "private": true,
-  "description": "Viyra.com™ — premium AI-powered global luxury real-estate operating platform",
+  "description": "Viyra.com(TM) - premium AI-powered global luxury real-estate operating platform",
   "author": "SaaSolutions SL",
   "license": "Proprietary",
-  "copyright": "© 2026 Paradox FZCO",
+  "copyright": "(C) 2026 Paradox FZCO",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
