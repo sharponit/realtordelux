@@ -60,30 +60,32 @@ export function PhotographerRealtorRequest() {
       </button>
 
       {isOpen ? (
-        <div aria-modal="true" className="fixed inset-0 z-50 grid place-items-center bg-black/70 px-4 py-8 backdrop-blur-sm" role="dialog">
-          <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto border border-gold/25 bg-[#f8f4ec] p-6 text-[#17110d] shadow-[0_30px_90px_rgba(0,0,0,0.35)] md:p-8">
-            <div className="flex items-start justify-between gap-6">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold">
-                  Curated Photographer Access
-                </p>
-                <h2 className="mt-3 font-display text-3xl md:text-4xl">Ask your Realtor to invite you.</h2>
-              </div>
-              <button
-                aria-label="Cancel"
-                className="border border-black/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-black transition hover:bg-white"
-                onClick={() => setIsOpen(false)}
-                type="button"
-              >
-                Cancel
-              </button>
+        <div
+          aria-modal="true"
+          className="fixed inset-0 z-50 grid place-items-center bg-black/70 px-4 py-8 backdrop-blur-sm"
+          role="dialog"
+        >
+          <div className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto border border-gold/25 bg-[#f8f4ec] px-6 pb-7 pt-9 text-[#17110d] shadow-[0_30px_90px_rgba(0,0,0,0.35)] md:px-9 md:pb-9 md:pt-11">
+            <button
+              aria-label="Close photographer access request"
+              className="absolute right-4 top-4 grid h-9 w-9 place-items-center border border-black/10 text-lg leading-none text-black transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-gold/60"
+              onClick={() => setIsOpen(false)}
+              type="button"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div className="mx-auto max-w-xl text-center">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold">
+                Curated Photographer Access
+              </p>
+              <h2 className="mt-3 font-display text-3xl md:text-4xl">Ask your Realtor to invite you.</h2>
+              <p className="mt-5 text-sm leading-7 text-taupe">
+                Photographers join Viyra through trusted Realtor partnerships. Enter the Realtor you work with and we'll notify them about Viyra. If they are already a member, they can approve your request. If they are not yet a member, they'll receive an invitation to join and invite you as a photographer.
+              </p>
             </div>
 
-            <p className="mt-5 text-sm leading-7 text-taupe">
-              Photographers join Viyra through trusted Realtor partnerships. Enter the Realtor you work with and we'll notify them about Viyra. If they are already a member, they can approve your request. If they are not yet a member, they'll receive an invitation to join and invite you as a photographer.
-            </p>
-
-            <form className="mt-7 grid gap-4 md:grid-cols-2" onSubmit={submit}>
+            <form className="mt-8 grid gap-4 md:grid-cols-2" onSubmit={submit}>
               <input className="hidden" name="company" tabIndex={-1} autoComplete="off" />
               <Field label="Photographer name" name="photographer_name" required />
               <Field label="Photographer email" name="photographer_email" required type="email" />
@@ -97,20 +99,13 @@ export function PhotographerRealtorRequest() {
                   name="message"
                 />
               </label>
-              <div className="md:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex justify-center pt-2 md:col-span-2">
                 <button
-                  className="bg-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#d3b777] disabled:opacity-60"
+                  className="w-full bg-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 disabled:opacity-60 sm:w-auto sm:min-w-72"
                   disabled={isSubmitting}
                   type="submit"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Request to Realtor'}
-                </button>
-                <button
-                  className="border border-black/10 px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-white"
-                  onClick={() => setIsOpen(false)}
-                  type="button"
-                >
-                  Cancel
                 </button>
               </div>
             </form>
