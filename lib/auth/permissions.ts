@@ -7,6 +7,8 @@ export const permissions = {
   renter: ['properties:read', 'offers:create', 'documents:own', 'messages:own'],
   investor: ['properties:read', 'offers:create', 'documents:own', 'messages:own'],
   realtor: ['listings:manage', 'leads:manage', 'clients:manage', 'offers:coordinate', 'firm:read'],
+  developer: ['developments:manage', 'projects:manage', 'investor_leads:read', 'media:manage', 'messages:own'],
+  property_manager: ['managed_properties:manage', 'maintenance:manage', 'tenants:manage', 'concierge:manage', 'messages:own'],
   photographer: ['photography:profile', 'photography:jobs', 'photography:uploads', 'photography:pricing'],
   lawyer: ['cases:manage', 'clients:read', 'documents:review', 'compliance:review'],
   notary: ['transactions:verify', 'appointments:manage', 'documents:verify'],

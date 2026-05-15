@@ -60,6 +60,24 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Firm', href: '/firm' },
     { label: 'Profile', href: '/profile/realtor' }
   ],
+  developer: [
+    { label: 'Dashboard', href: '/dashboard/developer' },
+    { label: 'Development Projects', href: '/developer/projects' },
+    { label: 'Investor Leads', href: '/developer/investor-leads' },
+    { label: 'Sales Progress', href: '/developer/sales-progress' },
+    { label: 'Floorplans', href: '/developer/floorplans' },
+    { label: 'Media Management', href: '/developer/media' },
+    { label: 'Profile', href: '/profile/developer' }
+  ],
+  property_manager: [
+    { label: 'Dashboard', href: '/dashboard/property-management' },
+    { label: 'Managed Properties', href: '/property-management/properties' },
+    { label: 'Maintenance', href: '/property-management/maintenance' },
+    { label: 'Tenants', href: '/property-management/tenants' },
+    { label: 'Concierge Requests', href: '/property-management/concierge' },
+    { label: 'Owner Communication', href: '/property-management/owners' },
+    { label: 'Profile', href: '/profile/property-management' }
+  ],
   photographer: [
     { label: 'Dashboard', href: '/dashboard/photographer' },
     { label: 'Jobs', href: '/photography/jobs' },

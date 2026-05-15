@@ -6,13 +6,15 @@ export interface RoutingProfile {
   onboarding_status: OnboardingStatus;
 }
 
-export function getPostLoginPath(profile: RoutingProfile | null) {
+export function getPostLoginPath(profile: RoutingProfile | null, nextPath?: string | null) {
+  const onboardingNext = nextPath?.startsWith('/onboarding') ? nextPath : null;
+
   if (!profile) {
-    return '/onboarding';
+    return onboardingNext || '/onboarding';
   }
 
   if (profile.onboarding_status !== 'complete') {
-    return '/onboarding';
+    return onboardingNext || '/onboarding';
   }
 
   return roleDashboardPath[getPrimaryRole(profile.roles?.length ? profile.roles : [profile.role])];

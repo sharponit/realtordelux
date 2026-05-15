@@ -1,8 +1,15 @@
 import { ProtectedShell } from '@/components/auth/ProtectedShell';
 import { requireOnboardedProfile } from '@/lib/auth/session';
+import { redirect } from 'next/navigation';
 
 export default async function InvitePhotographerPage() {
   const { profile } = await requireOnboardedProfile();
+  const canInvitePhotographers =
+    profile.roles?.includes('realtor') || profile.roles?.includes('admin') || profile.roles?.includes('super_admin');
+
+  if (!canInvitePhotographers) {
+    redirect('/dashboard');
+  }
 
   return (
     <ProtectedShell eyebrow="External Photographer Invitation" profile={profile} title="Invite a trusted photographer">
@@ -18,8 +25,9 @@ export default async function InvitePhotographerPage() {
           <textarea className="mt-2 min-h-32 w-full border border-black/10 bg-porcelain px-4 py-3" />
         </label>
         <div className="md:col-span-2 border border-gold/30 bg-gold/10 p-4 text-sm leading-7 text-black/70">
-          Invitation records are stored in photography_job_invites and linked to the property/job.
-          Email delivery can be connected to Resend, Supabase Auth invites, or a CRM workflow later.
+          Realtor invitation records are stored for trusted photographer onboarding and can be linked to
+          properties or photography jobs. Bulk invitations, resend controls, linked-photographer management,
+          and email delivery are prepared as workflow placeholders.
         </div>
         <button className="bg-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black" type="button">
           Send invitation placeholder

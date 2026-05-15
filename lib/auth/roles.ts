@@ -5,6 +5,8 @@ export const USER_ROLES = [
   'renter',
   'investor',
   'realtor',
+  'developer',
+  'property_manager',
   'photographer',
   'lawyer',
   'notary',
@@ -18,9 +20,9 @@ export type UserRole = (typeof USER_ROLES)[number];
 
 export type OnboardingStatus = 'not_started' | 'in_progress' | 'pending_verification' | 'complete';
 
-export type FirmType = 'real_estate_agency' | 'law_firm' | 'notary_office' | 'mixed_services';
+export type FirmType = 'real_estate_agency' | 'law_firm' | 'notary_office' | 'developer' | 'property_management' | 'mixed_services';
 
-export const PROFESSIONAL_ROLES = ['realtor', 'photographer', 'lawyer', 'notary'] as const satisfies readonly UserRole[];
+export const PROFESSIONAL_ROLES = ['realtor', 'developer', 'property_manager', 'photographer', 'lawyer', 'notary'] as const satisfies readonly UserRole[];
 export const FIRM_ROLES = ['firm_owner', 'firm_admin'] as const satisfies readonly UserRole[];
 export const PLATFORM_ROLES = ['admin', 'super_admin'] as const satisfies readonly UserRole[];
 
@@ -31,6 +33,8 @@ export const roleLabels: Record<UserRole, string> = {
   renter: 'Renter',
   investor: 'Investor',
   realtor: 'Realtor',
+  developer: 'Developer',
+  property_manager: 'Property Management',
   photographer: 'Photographer',
   lawyer: 'Lawyer',
   notary: 'Notary',
@@ -47,6 +51,8 @@ export const roleDashboardPath: Record<UserRole, string> = {
   renter: '/dashboard/renter',
   investor: '/dashboard/investor',
   realtor: '/dashboard/realtor',
+  developer: '/dashboard/developer',
+  property_manager: '/dashboard/property-management',
   photographer: '/dashboard/photographer',
   lawyer: '/dashboard/lawyer',
   notary: '/dashboard/notary',
@@ -65,7 +71,7 @@ export function requiresFirm(role: UserRole) {
 }
 
 export function isProfessionalRole(role: UserRole) {
-  return role === 'realtor' || role === 'photographer' || role === 'lawyer' || role === 'notary';
+  return role === 'realtor' || role === 'developer' || role === 'property_manager' || role === 'photographer' || role === 'lawyer' || role === 'notary';
 }
 
 export function isPlatformRole(role: UserRole) {
@@ -76,9 +82,11 @@ export const rolePriority: UserRole[] = [
   'admin',
   'super_admin',
   'realtor',
+  'developer',
   'seller',
   'buyer',
   'investor',
+  'property_manager',
   'lawyer',
   'notary',
   'photographer',

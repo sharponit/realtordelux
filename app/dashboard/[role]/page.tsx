@@ -10,6 +10,8 @@ const dashboardCards: Record<UserRole, string[]> = {
   renter: ['Rental matches', 'Saved rentals', 'Offers', 'Concierge'],
   investor: ['Investment opportunities', 'Saved assets', 'ROI preferences', 'Offers'],
   realtor: ['Clients', 'Listings', 'Seller Invitations', 'Lawyer Recommendations', 'Photographer Booking', 'Commission Tracking'],
+  developer: ['Development Projects', 'Investor Leads', 'Sales Progress', 'Floorplans', 'Media Management', 'Project Verification'],
+  property_manager: ['Managed Properties', 'Maintenance', 'Tenants', 'Concierge Requests', 'Owner Communication', 'Emergency Support'],
   photographer: ['Incoming job requests', 'Accepted jobs', 'Scheduled shoots', 'Photo uploads', 'Pricing settings', 'Portfolio management', 'Verification status', 'Earnings overview'],
   lawyer: ['Cases', 'Clients', 'Documents', 'Compliance'],
   notary: ['Transactions', 'Appointments', 'Documents', 'Verification'],

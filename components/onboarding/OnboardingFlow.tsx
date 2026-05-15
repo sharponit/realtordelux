@@ -25,7 +25,8 @@ const intentOptions: Array<{ id: OnboardingIntent; label: string; roles: UserRol
   { id: 'represent_clients', label: 'Represent clients', roles: ['realtor'] },
   { id: 'legal_services', label: 'Offer legal services', roles: ['lawyer'] },
   { id: 'notary_services', label: 'Provide notary services', roles: ['notary'] },
-  { id: 'photography_services', label: 'Offer photography services', roles: ['photographer'] },
+  { id: 'develop_projects', label: 'Launch new developments', roles: ['developer'] },
+  { id: 'manage_properties', label: 'Manage luxury properties', roles: ['property_manager'] },
   { id: 'explore_opportunities', label: 'Explore opportunities', roles: ['general'] }
 ];
 
@@ -73,6 +74,26 @@ const roleQuestions: Record<UserRole, Question[]> = {
     { key: 'realtor_specialization', label: 'Specialization' },
     { key: 'realtor_subscription', label: 'Subscription setup placeholder', type: 'select', options: ['Trial', 'Agency setup later'] }
   ],
+  developer: [
+    { key: 'developer_company', label: 'Developer company name' },
+    { key: 'developer_active_projects', label: 'Active projects' },
+    { key: 'developer_regions', label: 'Development regions' },
+    { key: 'developer_project_scale', label: 'Project scale' },
+    { key: 'developer_construction_status', label: 'Construction status', type: 'select', options: ['Planning', 'Under construction', 'Sales phase', 'Completed inventory'] },
+    { key: 'developer_website', label: 'Website' },
+    { key: 'developer_investment_focus', label: 'Investment focus' },
+    { key: 'developer_luxury_experience', label: 'Luxury segment experience', type: 'textarea' }
+  ],
+  property_manager: [
+    { key: 'property_manager_company', label: 'Company name' },
+    { key: 'property_manager_regions', label: 'Operating regions' },
+    { key: 'property_manager_services', label: 'Services offered', type: 'textarea' },
+    { key: 'property_manager_team_size', label: 'Team size', type: 'number' },
+    { key: 'property_manager_luxury_experience', label: 'Luxury experience', type: 'textarea' },
+    { key: 'property_manager_emergency_support', label: 'Emergency support capabilities', type: 'select', options: ['24/7 support', 'Business hours', 'Partner network'] },
+    { key: 'property_manager_languages', label: 'Languages spoken' },
+    { key: 'property_manager_management_types', label: 'Management types' }
+  ],
   lawyer: [
     { key: 'lawyer_firm', label: 'Law firm name' },
     { key: 'lawyer_jurisdiction', label: 'Jurisdiction' },
@@ -105,10 +126,10 @@ const roleQuestions: Record<UserRole, Question[]> = {
   super_admin: []
 };
 
-export function OnboardingFlow({ userEmail }: { userEmail: string }) {
+export function OnboardingFlow({ initialIntent, userEmail }: { initialIntent?: OnboardingIntent; userEmail: string }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [selectedIntents, setSelectedIntents] = useState<OnboardingIntent[]>([]);
+  const [selectedIntents, setSelectedIntents] = useState<OnboardingIntent[]>(initialIntent ? [initialIntent] : []);
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [preferredLanguages, setPreferredLanguages] = useState('English');

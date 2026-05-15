@@ -8,6 +8,8 @@ export type OnboardingIntent =
   | 'represent_clients'
   | 'legal_services'
   | 'notary_services'
+  | 'develop_projects'
+  | 'manage_properties'
   | 'photography_services'
   | 'explore_opportunities';
 
@@ -29,6 +31,8 @@ const intentRoleMap: Record<OnboardingIntent, UserRole> = {
   represent_clients: 'realtor',
   legal_services: 'lawyer',
   notary_services: 'notary',
+  develop_projects: 'developer',
+  manage_properties: 'property_manager',
   photography_services: 'photographer',
   explore_opportunities: 'general'
 };

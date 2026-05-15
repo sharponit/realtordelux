@@ -22,8 +22,8 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             Private client dashboard. Verified professional network.
           </h2>
           <p className="mt-6 text-base leading-8 text-taupe">
-            Access Viyra as a buyer, seller, realtor, photographer, legal professional, firm team
-            member, firm owner, or platform administrator.
+            Access Viyra as a buyer, seller, realtor, developer, property manager, photographer,
+            legal professional, firm team member, firm owner, or platform administrator.
           </p>
         </div>
         <p className="text-xs text-black/45">

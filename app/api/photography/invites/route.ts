@@ -11,6 +11,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
   }
 
+  const { data: roles } = await supabase
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', user.id)
+    .eq('status', 'active');
+  const canInvite = (roles || []).some((row: { role: string }) =>
+    ['realtor', 'admin', 'super_admin'].includes(row.role)
+  );
+
+  if (!canInvite) {
+    return NextResponse.json({ error: 'Photographer invitations are available to verified Realtors.' }, { status: 403 });
+  }
+
   const body = await request.json();
 
   const { data, error } = await supabase

@@ -1,9 +1,26 @@
 import { OnboardingFlow } from '@/components/onboarding/OnboardingFlow';
 import { getCurrentUserProfile } from '@/lib/auth/session';
 import { SiteFooter, ViyraLogo } from '@/components/layout/SiteChrome';
+import type { OnboardingIntent } from '@/lib/onboarding/roleAssignment';
 
-export default async function OnboardingPage() {
+type OnboardingPageProps = {
+  searchParams?: Promise<{ intent?: string }>;
+};
+
+const allowedInitialIntents: OnboardingIntent[] = [
+  'represent_clients',
+  'legal_services',
+  'notary_services',
+  'develop_projects',
+  'manage_properties'
+];
+
+export default async function OnboardingPage({ searchParams }: OnboardingPageProps) {
   const { user, profile } = await getCurrentUserProfile();
+  const params = await searchParams;
+  const initialIntent = allowedInitialIntents.includes(params?.intent as OnboardingIntent)
+    ? (params?.intent as OnboardingIntent)
+    : undefined;
 
   return (
     <main className="min-h-screen bg-porcelain text-black">
@@ -25,7 +42,7 @@ export default async function OnboardingPage() {
         </div>
       </section>
       <section className="mx-auto max-w-5xl px-6 py-10 lg:px-10">
-        <OnboardingFlow userEmail={profile?.email || user?.email || ''} />
+        <OnboardingFlow initialIntent={initialIntent} userEmail={profile?.email || user?.email || ''} />
       </section>
       <SiteFooter />
     </main>

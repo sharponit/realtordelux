@@ -13,7 +13,7 @@ const professionalRoles = [
     benefits: ['Qualified global clientele', 'Seller invitations', 'Listing visibility', 'Transaction collaboration'],
     regions: 'Prime city, coastal, golf, and new-development markets',
     cta: 'Apply as Realtor',
-    href: '/login?professional_role=realtor&next=/onboarding',
+    href: '/join/realtor',
     image:
       'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85'
   },
@@ -25,7 +25,7 @@ const professionalRoles = [
     benefits: ['Verified legal profile', 'Jurisdiction visibility', 'Transaction invitations', 'Specialty positioning'],
     regions: 'Jurisdictions, languages, and cross-border service corridors',
     cta: 'Apply as Lawyer',
-    href: '/login?professional_role=lawyer&next=/onboarding',
+    href: '/join/lawyer',
     image:
       'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=85'
   },
@@ -37,9 +37,33 @@ const professionalRoles = [
     benefits: ['Verified office profile', 'Appointment readiness', 'Accepted-context sharing', 'Regional trust signals'],
     regions: 'Licensed jurisdictions and destination markets',
     cta: 'Apply as Notary',
-    href: '/login?professional_role=notary&next=/onboarding',
+    href: '/join/notary',
     image:
       'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85'
+  },
+  {
+    title: 'Developers',
+    eyebrow: 'New Development Access',
+    description:
+      'Introduce off-plan projects, branded residences, investment developments, and new construction opportunities to a qualified international audience.',
+    benefits: ['Project visibility', 'Investor positioning', 'Sales phase readiness', 'Development media workflows'],
+    regions: 'Prime new-development corridors and destination resort markets',
+    cta: 'Apply as Developer',
+    href: '/join/developer',
+    image:
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=85'
+  },
+  {
+    title: 'Property Management',
+    eyebrow: 'Owner Services',
+    description:
+      'Support luxury owners with rental management, maintenance, tenant coordination, relocation support, and concierge operations.',
+    benefits: ['Managed property workflows', 'Owner communication', 'Concierge requests', 'Maintenance coordination'],
+    regions: 'Urban, coastal, and resort markets with premium owner demand',
+    cta: 'Apply as Property Management',
+    href: '/join/property-management',
+    image:
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=85'
   },
   {
     title: 'Photographers',
@@ -49,7 +73,7 @@ const professionalRoles = [
     benefits: ['Recurring premium assignments', 'Realtor partnerships', 'Portfolio-led visibility', 'Quality-based approval path'],
     regions: 'Local luxury listing markets and trusted Realtor networks',
     cta: 'Join Through Realtor Partnership',
-    href: '/login?professional_role=photographer&access_model=realtor_partner&next=/onboarding',
+    href: '/join/photographer',
     image:
       'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85'
   }
@@ -59,6 +83,8 @@ const profilePreviews = [
   ['Realtor', 'English, Spanish, French', 'Marbella, Dubai, Lisbon', 'Off-market villas, seller representation', '12 years', 'Verified profile pending'],
   ['Lawyer', 'English, Arabic, French', 'UAE, Morocco, France', 'Due diligence, contract review', '15 years', 'Bar registration review'],
   ['Notary', 'Spanish, Dutch, English', 'Spain, Portugal', 'Transfers, signing coordination', '18 years', 'Jurisdiction verification'],
+  ['Developer', 'English, French, Arabic', 'Dubai, Cannes, Marrakech', 'Branded residences, off-plan projects', '20 years', 'Project review pending'],
+  ['Property Management', 'English, Spanish, Dutch', 'Marbella, Ibiza, Algarve', 'Rental management, concierge, maintenance', '11 years', 'Company verification pending'],
   ['Photographer', 'English, Spanish', 'Costa del Sol, Ibiza', 'Luxury interiors, drone, twilight shoots', '9 years', 'Portfolio approval path']
 ];
 
@@ -200,7 +226,7 @@ export default function ProfessionalsPage() {
               Profiles are designed to support client confidence through language, region, specialty, experience, and verification signals.
             </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {profilePreviews.map(([role, languages, regions, specialties, experience, verification], index) => (
               <article className="border border-black/10 bg-white p-5 shadow-[0_18px_55px_rgba(23,23,23,0.05)]" key={role}>
                 <div className="aspect-[1.1] bg-[#080b0f]">
@@ -209,6 +235,8 @@ export default function ProfessionalsPage() {
                       '1500648767791-00dcc994a43e',
                       '1494790108377-be9c29b29330',
                       '1507003211169-0a1dd7228f2d',
+                      '1486406146926-c627a92ad1ab',
+                      '1560518883-ce09059eeffa',
                       '1534528741775-53994a69daeb'
                     ][index]}?auto=format&fit=crop&w=700&q=85`}
                     alt={`${role} profile placeholder`}

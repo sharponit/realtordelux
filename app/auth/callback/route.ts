@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
         .eq('user_id', user.id)
         .single();
 
-      response = NextResponse.redirect(new URL(getPostLoginPath(profile), request.url));
+      response = NextResponse.redirect(new URL(getPostLoginPath(profile, next), request.url));
     }
   }
 
