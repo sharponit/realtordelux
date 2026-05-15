@@ -97,40 +97,40 @@ export function LandingPropertySearch() {
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
       <div className="grid max-w-4xl gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <LuxurySelect label="Transaction Type" onChange={setListingType} value={listingType}>
+        <LuxurySelect isPlaceholder={!listingType} label="Transaction Type" onChange={setListingType} value={listingType}>
           {transactionTypes.map(([label, value]) => (
             <option key={label} value={value}>{label}</option>
           ))}
         </LuxurySelect>
 
-        <LuxurySelect label="Country" onChange={updateCountry} value={country}>
+        <LuxurySelect isPlaceholder={!country} label="Country" onChange={updateCountry} value={country}>
           <option value="">Any country</option>
           {Object.keys(countryCities).map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </LuxurySelect>
 
-        <LuxurySelect label="City / Region" onChange={setCity} value={city}>
+        <LuxurySelect isPlaceholder={!city} label="City / Region" onChange={setCity} value={city}>
           <option value="">Any city or region</option>
           {cityOptions.map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </LuxurySelect>
 
-        <LuxurySelect label="Property Type" onChange={setPropertyType} value={propertyType}>
+        <LuxurySelect isPlaceholder={!propertyType} label="Property Type" onChange={setPropertyType} value={propertyType}>
           <option value="">Any property</option>
           {propertyTypes.filter(Boolean).map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </LuxurySelect>
 
-        <LuxurySelect label="Budget Range" onChange={(value) => setBudgetIndex(Number(value))} value={String(budgetIndex)}>
+        <LuxurySelect isPlaceholder={budgetIndex === 0} label="Budget Range" onChange={(value) => setBudgetIndex(Number(value))} value={String(budgetIndex)}>
           {budgetRanges.map((range, index) => (
             <option key={range.label} value={index}>{range.label}</option>
           ))}
         </LuxurySelect>
 
-        <LuxurySelect label="Lifestyle Preference" onChange={setLifestyle} value={lifestyle}>
+        <LuxurySelect isPlaceholder={!lifestyle} label="Lifestyle Preference" onChange={setLifestyle} value={lifestyle}>
           <option value="">Any lifestyle</option>
           {lifestyles.filter(Boolean).map((item) => (
             <option key={item} value={item}>{item}</option>
@@ -154,23 +154,25 @@ export function LandingPropertySearch() {
 
 function LuxurySelect({
   children,
+  isPlaceholder = false,
   label,
   onChange,
   value
 }: {
   children: ReactNode;
+  isPlaceholder?: boolean;
   label: string;
   onChange: (value: string) => void;
   value: string;
 }) {
   return (
-    <label className="group block border border-white/12 bg-white/[0.07] px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:bg-white/[0.105] focus-within:border-gold/55 focus-within:bg-white/[0.11] focus-within:shadow-[0_0_0_1px_rgba(200,169,107,0.18),0_12px_34px_rgba(0,0,0,0.12)]">
-      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/62">
+    <label className="group block border border-ivory/18 bg-ivory/[0.105] px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:bg-ivory/[0.145] focus-within:border-gold/65 focus-within:bg-ivory/[0.155] focus-within:shadow-[0_0_0_1px_rgba(200,169,107,0.2),0_12px_34px_rgba(0,0,0,0.12)]">
+      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/78">
         {label}
       </span>
       <span className="relative mt-1.5 block">
         <select
-          className="min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-9 text-[15px] font-normal text-ivory outline-none transition"
+          className={`luxury-landing-select min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-9 text-[15px] font-normal outline-none transition ${isPlaceholder ? 'text-[#eadfc9]' : 'text-[#fff8ea]'}`}
           onChange={(event) => onChange(event.target.value)}
           value={value}
         >
@@ -178,9 +180,9 @@ function LuxurySelect({
         </select>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 transition duration-300 group-hover:bg-black/28"
+          className="pointer-events-none absolute right-0 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-black/32 transition duration-300 group-hover:bg-black/40"
         >
-          <span className="h-2 w-2 rotate-45 border-b border-r border-gold/85 transition duration-300 group-hover:border-gold" />
+          <span className="h-2 w-2 rotate-45 border-b border-r border-gold transition duration-300" />
         </span>
       </span>
     </label>
