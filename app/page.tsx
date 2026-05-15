@@ -205,7 +205,7 @@ export default function Home() {
               ['Sell', '/selling'],
               ['Rent', '/renting'],
               ['Explore New Developments', '/new-developments'],
-              ['Join as Professional', '/login']
+              ['Join as Professional', '/professionals']
             ].map(([label, href]) => (
               <Link
                 className="border border-white/10 px-5 py-4 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white/75 transition hover:border-gold hover:text-gold"
