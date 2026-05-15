@@ -12,24 +12,24 @@ const transactionTypes = [
 ] as const;
 
 const countryCities: Record<string, string[]> = {
-  Spain: ['Marbella', 'Benahavis', 'Estepona', 'Ibiza', 'Madrid', 'Barcelona'],
-  UAE: ['Dubai', 'Abu Dhabi', 'Palm Jumeirah', 'Dubai Hills', 'Emirates Hills'],
-  Morocco: ['Dakhla', 'Casablanca', 'Rabat', 'Marrakech', 'Tangier'],
-  Portugal: ['Lisbon', 'Algarve', 'Porto'],
-  France: ['Cannes', 'Monaco Region', 'Saint-Tropez']
+  France: ['Cannes', 'Monaco Region', 'Saint-Tropez'],
+  Morocco: ['Casablanca', 'Dakhla', 'Marrakech', 'Rabat', 'Tangier'],
+  Portugal: ['Algarve', 'Lisbon', 'Porto'],
+  Spain: ['Barcelona', 'Benahavis', 'Estepona', 'Ibiza', 'Madrid', 'Marbella'],
+  UAE: ['Abu Dhabi', 'Dubai', 'Dubai Hills', 'Emirates Hills', 'Palm Jumeirah']
 };
 
 const propertyTypes = [
   '',
-  'Villa',
-  'Mansion',
-  'Penthouse',
   'Apartment',
   'Beachfront Home',
   'Golf Estate',
+  'Investment Property',
+  'Mansion',
   'New Development',
+  'Penthouse',
   'Private Compound',
-  'Investment Property'
+  'Villa'
 ];
 
 const budgetRanges = [
@@ -44,16 +44,16 @@ const budgetRanges = [
 
 const lifestyles = [
   '',
-  'Sea View',
   'Beachfront',
-  'Golf Front',
-  'Gated Community',
-  'Private Pool',
-  'Smart Home',
-  'Golden Visa Eligible',
   'Crypto Accepted',
+  'Gated Community',
+  'Golden Visa Eligible',
+  'Golf Front',
   'High Rental Yield',
-  'Privacy Focused'
+  'Privacy Focused',
+  'Private Pool',
+  'Sea View',
+  'Smart Home'
 ];
 
 export function LandingPropertySearch() {
@@ -140,7 +140,7 @@ export function LandingPropertySearch() {
 
       <div className="flex justify-stretch md:justify-end xl:self-stretch">
         <button
-          className="min-h-12 w-full bg-gold/92 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_12px_34px_rgba(200,169,107,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-[#11100e] disabled:opacity-70 md:w-auto xl:min-h-full xl:px-9"
+          className="min-h-12 w-full bg-[#C8A96B] px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_12px_34px_rgba(200,169,107,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-[#11100e] disabled:opacity-70 md:w-auto xl:min-h-full xl:px-9"
           disabled={isLoading}
           onClick={submit}
           type="button"
@@ -166,13 +166,13 @@ function LuxurySelect({
   value: string;
 }) {
   return (
-    <label className="group block border border-ivory/18 bg-ivory/[0.105] px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:bg-ivory/[0.145] focus-within:border-gold/65 focus-within:bg-ivory/[0.155] focus-within:shadow-[0_0_0_1px_rgba(200,169,107,0.2),0_12px_34px_rgba(0,0,0,0.12)]">
-      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/78">
+    <label className="group block border border-ivory/22 bg-[rgba(18,16,13,0.78)] px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:bg-[rgba(25,21,15,0.86)] focus-within:border-gold/70 focus-within:bg-[rgba(27,22,15,0.9)] focus-within:shadow-[0_0_0_1px_rgba(200,169,107,0.2),0_12px_34px_rgba(0,0,0,0.16)]">
+      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-[#d8c690]">
         {label}
       </span>
       <span className="relative mt-1.5 block">
         <select
-          className={`luxury-landing-select min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-9 text-[15px] font-normal outline-none transition ${isPlaceholder ? 'text-[#eadfc9]' : 'text-[#fff8ea]'}`}
+          className={`luxury-landing-select min-h-8 w-full cursor-pointer appearance-none bg-[#12100d] pr-9 text-[15px] font-normal outline-none transition ${isPlaceholder ? 'text-[#f0e7d8]' : 'text-[#fffaf0]'}`}
           onChange={(event) => onChange(event.target.value)}
           value={value}
         >

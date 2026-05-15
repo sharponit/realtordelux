@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       <section className="relative z-20 mx-auto -mt-14 max-w-6xl px-6 lg:px-10">
-        <div className="overflow-visible border border-white/10 bg-[#11100e]/88 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-md sm:p-5 lg:p-6">
+        <div className="overflow-visible border border-white/10 bg-[rgba(17,16,14,0.9)] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-md sm:p-5 lg:p-6">
           <LandingPropertySearch />
         </div>
       </section>
