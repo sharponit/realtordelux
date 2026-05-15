@@ -83,8 +83,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto -mt-16 max-w-5xl px-6 lg:px-0">
-        <div className="overflow-visible rounded-md bg-[#0a0d10] p-4 shadow-[0_26px_90px_rgba(0,0,0,0.28)] sm:p-5">
+      <section className="relative z-20 mx-auto -mt-14 max-w-6xl px-6 lg:px-10">
+        <div className="overflow-visible border border-white/10 bg-[#11100e]/88 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-md sm:p-5 lg:p-6">
           <LandingPropertySearch />
         </div>
       </section>

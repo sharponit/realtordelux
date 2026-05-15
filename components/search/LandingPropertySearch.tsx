@@ -95,8 +95,8 @@ export function LandingPropertySearch() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="space-y-5">
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
         <LuxurySelect label="Transaction Type" onChange={setListingType} value={listingType}>
           {transactionTypes.map(([label, value]) => (
             <option key={label} value={value}>{label}</option>
@@ -118,7 +118,7 @@ export function LandingPropertySearch() {
         </LuxurySelect>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
         <LuxurySelect label="Property Type" onChange={setPropertyType} value={propertyType}>
           <option value="">Any property</option>
           {propertyTypes.filter(Boolean).map((item) => (
@@ -142,7 +142,7 @@ export function LandingPropertySearch() {
 
       <div className="flex justify-stretch pt-1 md:justify-end">
         <button
-          className="min-h-14 w-full rounded-sm bg-gold px-8 text-xs font-bold uppercase tracking-[0.14em] text-black shadow-[0_14px_34px_rgba(200,169,107,0.2)] transition hover:bg-[#b99655] focus:outline-none focus:ring-2 focus:ring-gold/70 focus:ring-offset-2 focus:ring-offset-[#0a0d10] disabled:opacity-70 md:w-auto"
+          className="min-h-12 w-full bg-gold/92 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_10px_28px_rgba(200,169,107,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-[#11100e] disabled:opacity-70 md:w-auto"
           disabled={isLoading}
           onClick={submit}
           type="button"
@@ -166,17 +166,23 @@ function LuxurySelect({
   value: string;
 }) {
   return (
-    <label className="block rounded-sm border border-white/12 bg-[#141414] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition hover:bg-[#1b1a18] focus-within:border-gold/70">
-      <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory/58">
+    <label className="group block border-b border-white/14 bg-white/[0.025] px-4 py-3 transition duration-300 hover:bg-white/[0.055] focus-within:border-gold/60 focus-within:bg-white/[0.06]">
+      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/48">
         {label}
       </span>
-      <select
-        className="mt-2 min-h-8 w-full cursor-pointer appearance-none bg-[#141414] text-sm font-medium text-ivory outline-none transition hover:bg-[#1b1a18] focus:bg-[#1b1a18]"
-        onChange={(event) => onChange(event.target.value)}
-        value={value}
-      >
-        {children}
-      </select>
+      <span className="relative mt-1.5 block">
+        <select
+          className="min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-8 text-[15px] font-normal text-ivory outline-none transition"
+          onChange={(event) => onChange(event.target.value)}
+          value={value}
+        >
+          {children}
+        </select>
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-b border-r border-gold/70 transition duration-300 group-hover:border-gold"
+        />
+      </span>
     </label>
   );
 }
