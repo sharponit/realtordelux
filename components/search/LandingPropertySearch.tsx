@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -94,55 +95,61 @@ export function LandingPropertySearch() {
   }
 
   return (
-    <div className="grid gap-3 md:grid-cols-[repeat(6,minmax(0,1fr))_auto]">
-      <LuxurySelect label="Transaction" onChange={setListingType} value={listingType}>
-        {transactionTypes.map(([label, value]) => (
-          <option key={label} value={value}>{label}</option>
-        ))}
-      </LuxurySelect>
+    <div className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <LuxurySelect label="Transaction Type" onChange={setListingType} value={listingType}>
+          {transactionTypes.map(([label, value]) => (
+            <option key={label} value={value}>{label}</option>
+          ))}
+        </LuxurySelect>
 
-      <LuxurySelect label="Country" onChange={updateCountry} value={country}>
-        <option value="">Any country</option>
-        {Object.keys(countryCities).map((item) => (
-          <option key={item} value={item}>{item}</option>
-        ))}
-      </LuxurySelect>
+        <LuxurySelect label="Country" onChange={updateCountry} value={country}>
+          <option value="">Any country</option>
+          {Object.keys(countryCities).map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </LuxurySelect>
 
-      <LuxurySelect label="City / Region" onChange={setCity} value={city}>
-        <option value="">Any city</option>
-        {cityOptions.map((item) => (
-          <option key={item} value={item}>{item}</option>
-        ))}
-      </LuxurySelect>
+        <LuxurySelect label="City / Region" onChange={setCity} value={city}>
+          <option value="">Any city or region</option>
+          {cityOptions.map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </LuxurySelect>
+      </div>
 
-      <LuxurySelect label="Property" onChange={setPropertyType} value={propertyType}>
-        <option value="">Any property</option>
-        {propertyTypes.filter(Boolean).map((item) => (
-          <option key={item} value={item}>{item}</option>
-        ))}
-      </LuxurySelect>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <LuxurySelect label="Property Type" onChange={setPropertyType} value={propertyType}>
+          <option value="">Any property</option>
+          {propertyTypes.filter(Boolean).map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </LuxurySelect>
 
-      <LuxurySelect label="Budget" onChange={(value) => setBudgetIndex(Number(value))} value={String(budgetIndex)}>
-        {budgetRanges.map((range, index) => (
-          <option key={range.label} value={index}>{range.label}</option>
-        ))}
-      </LuxurySelect>
+        <LuxurySelect label="Budget Range" onChange={(value) => setBudgetIndex(Number(value))} value={String(budgetIndex)}>
+          {budgetRanges.map((range, index) => (
+            <option key={range.label} value={index}>{range.label}</option>
+          ))}
+        </LuxurySelect>
 
-      <LuxurySelect label="Lifestyle" onChange={setLifestyle} value={lifestyle}>
-        <option value="">Any lifestyle</option>
-        {lifestyles.filter(Boolean).map((item) => (
-          <option key={item} value={item}>{item}</option>
-        ))}
-      </LuxurySelect>
+        <LuxurySelect label="Lifestyle Preference" onChange={setLifestyle} value={lifestyle}>
+          <option value="">Any lifestyle</option>
+          {lifestyles.filter(Boolean).map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </LuxurySelect>
+      </div>
 
-      <button
-        className="min-h-16 bg-gold px-7 text-xs font-bold uppercase tracking-[0.14em] text-black transition hover:bg-[#b99655] disabled:opacity-70"
-        disabled={isLoading}
-        onClick={submit}
-        type="button"
-      >
-        {isLoading ? 'Discovering...' : 'Discover Properties'}
-      </button>
+      <div className="flex justify-stretch pt-1 md:justify-end">
+        <button
+          className="min-h-14 w-full rounded-sm bg-gold px-8 text-xs font-bold uppercase tracking-[0.14em] text-black shadow-[0_14px_34px_rgba(200,169,107,0.2)] transition hover:bg-[#b99655] focus:outline-none focus:ring-2 focus:ring-gold/70 focus:ring-offset-2 focus:ring-offset-[#0a0d10] disabled:opacity-70 md:w-auto"
+          disabled={isLoading}
+          onClick={submit}
+          type="button"
+        >
+          {isLoading ? 'Discovering...' : 'Discover Properties'}
+        </button>
+      </div>
     </div>
   );
 }
@@ -153,18 +160,18 @@ function LuxurySelect({
   onChange,
   value
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   label: string;
   onChange: (value: string) => void;
   value: string;
 }) {
   return (
-    <label className="block border border-white/10 bg-white/[0.04] px-4 py-3">
-      <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] text-white/48">
+    <label className="block rounded-sm border border-white/12 bg-[#141414] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition hover:bg-[#1b1a18] focus-within:border-gold/70">
+      <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory/58">
         {label}
       </span>
       <select
-        className="mt-2 w-full bg-transparent text-sm text-white outline-none"
+        className="mt-2 min-h-8 w-full cursor-pointer appearance-none bg-[#141414] text-sm font-medium text-ivory outline-none transition hover:bg-[#1b1a18] focus:bg-[#1b1a18]"
         onChange={(event) => onChange(event.target.value)}
         value={value}
       >
