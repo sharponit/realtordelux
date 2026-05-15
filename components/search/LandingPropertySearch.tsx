@@ -95,8 +95,8 @@ export function LandingPropertySearch() {
   }
 
   return (
-    <div className="space-y-5">
-      <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
+      <div className="grid max-w-4xl gap-4 md:grid-cols-2 xl:grid-cols-3">
         <LuxurySelect label="Transaction Type" onChange={setListingType} value={listingType}>
           {transactionTypes.map(([label, value]) => (
             <option key={label} value={value}>{label}</option>
@@ -116,9 +116,7 @@ export function LandingPropertySearch() {
             <option key={item} value={item}>{item}</option>
           ))}
         </LuxurySelect>
-      </div>
 
-      <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
         <LuxurySelect label="Property Type" onChange={setPropertyType} value={propertyType}>
           <option value="">Any property</option>
           {propertyTypes.filter(Boolean).map((item) => (
@@ -140,9 +138,9 @@ export function LandingPropertySearch() {
         </LuxurySelect>
       </div>
 
-      <div className="flex justify-stretch pt-1 md:justify-end">
+      <div className="flex justify-stretch md:justify-end xl:self-stretch">
         <button
-          className="min-h-12 w-full bg-gold/92 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_10px_28px_rgba(200,169,107,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-[#11100e] disabled:opacity-70 md:w-auto"
+          className="min-h-12 w-full bg-gold/92 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_12px_34px_rgba(200,169,107,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#d3b777] focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-[#11100e] disabled:opacity-70 md:w-auto xl:min-h-full xl:px-9"
           disabled={isLoading}
           onClick={submit}
           type="button"
@@ -166,13 +164,13 @@ function LuxurySelect({
   value: string;
 }) {
   return (
-    <label className="group block border-b border-white/14 bg-white/[0.025] px-4 py-3 transition duration-300 hover:bg-white/[0.055] focus-within:border-gold/60 focus-within:bg-white/[0.06]">
-      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/48">
+    <label className="group block border border-white/12 bg-white/[0.07] px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:bg-white/[0.105] focus-within:border-gold/55 focus-within:bg-white/[0.11] focus-within:shadow-[0_0_0_1px_rgba(200,169,107,0.18),0_12px_34px_rgba(0,0,0,0.12)]">
+      <span className="block text-[9px] font-medium uppercase tracking-[0.22em] text-ivory/62">
         {label}
       </span>
       <span className="relative mt-1.5 block">
         <select
-          className="min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-8 text-[15px] font-normal text-ivory outline-none transition"
+          className="min-h-8 w-full cursor-pointer appearance-none bg-transparent pr-9 text-[15px] font-normal text-ivory outline-none transition"
           onChange={(event) => onChange(event.target.value)}
           value={value}
         >
@@ -180,8 +178,10 @@ function LuxurySelect({
         </select>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-b border-r border-gold/70 transition duration-300 group-hover:border-gold"
-        />
+          className="pointer-events-none absolute right-0 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-black/20 transition duration-300 group-hover:bg-black/28"
+        >
+          <span className="h-2 w-2 rotate-45 border-b border-r border-gold/85 transition duration-300 group-hover:border-gold" />
+        </span>
       </span>
     </label>
   );
