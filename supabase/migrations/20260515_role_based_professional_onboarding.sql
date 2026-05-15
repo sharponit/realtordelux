@@ -53,6 +53,7 @@ create table if not exists public.realtor_photographer_relationships (
   photographer_user_id uuid references auth.users(id) on delete cascade,
   photographer_email text,
   invitation_id uuid,
+  photographer_request_id uuid references public.photographer_realtor_requests(id) on delete set null,
   relationship_status text not null default 'invited',
   quality_status text not null default 'pending_review',
   portfolio_approved boolean not null default false,
@@ -147,3 +148,4 @@ create index if not exists service_regions_lookup_idx on public.service_regions(
 create index if not exists onboarding_states_user_role_idx on public.onboarding_states(user_id, role);
 create index if not exists realtor_photographer_realtor_idx on public.realtor_photographer_relationships(realtor_user_id);
 create index if not exists realtor_photographer_photographer_idx on public.realtor_photographer_relationships(photographer_user_id);
+create index if not exists realtor_photographer_relationships_request_idx on public.realtor_photographer_relationships(photographer_request_id);

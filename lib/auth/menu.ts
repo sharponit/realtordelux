@@ -54,6 +54,7 @@ export const roleMenus: Record<UserRole, MenuItem[]> = {
     { label: 'Review Listings', href: '/realtor/listings/review' },
     { label: 'Clients', href: '/clients' },
     { label: 'Lawyer Recommendations', href: '/lawyer-recommendations' },
+    { label: 'Photographer Requests', href: '/photography/requests' },
     { label: 'Photographer Booking', href: '/photography/assign' },
     { label: 'Commission Tracking', href: '/brokerage/invitations' },
     { label: 'Messages', href: '/messages' },

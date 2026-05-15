@@ -292,6 +292,7 @@ export interface Database {
       photographer_profiles: { Row: PhotographerProfileRow; Insert: Partial<PhotographerProfileRow>; Update: Partial<PhotographerProfileRow> };
       photographer_pricing: { Row: PhotographerPricingRow; Insert: Partial<PhotographerPricingRow>; Update: Partial<PhotographerPricingRow> };
       photographer_portfolios: { Row: any; Insert: any; Update: any };
+      photographer_realtor_requests: { Row: any; Insert: any; Update: any };
       photography_jobs: { Row: PhotographyJobRow; Insert: Partial<PhotographyJobRow>; Update: Partial<PhotographyJobRow> };
       photography_job_invites: { Row: any; Insert: any; Update: any };
       photography_uploads: { Row: PhotographyUploadRow; Insert: Partial<PhotographyUploadRow>; Update: Partial<PhotographyUploadRow> };

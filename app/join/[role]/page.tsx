@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { PhotographerRealtorRequest } from '@/components/join/PhotographerRealtorRequest';
 import { SiteHeader } from '@/components/layout/SiteChrome';
 import type { OnboardingIntent } from '@/lib/onboarding/roleAssignment';
 
@@ -143,12 +144,7 @@ function PhotographerInvitationPage() {
             </div>
           ))}
         </div>
-        <Link
-          href="/login?next=/photography/invite"
-          className="mt-10 inline-flex border border-gold px-7 py-4 text-xs font-bold uppercase tracking-[0.16em] text-gold transition hover:bg-gold hover:text-black"
-        >
-          Realtor: Invite Photographer
-        </Link>
+        <PhotographerRealtorRequest />
       </section>
     </main>
   );
