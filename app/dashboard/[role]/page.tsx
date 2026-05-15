@@ -1,11 +1,12 @@
 import { redirect } from 'next/navigation';
 import { ProtectedShell, ProfileSummary, roleDisplayName } from '@/components/auth/ProtectedShell';
+import { ResidencyDashboardSection } from '@/components/residency/ResidencyDashboardSection';
 import { roleDashboardPath, type UserRole } from '@/lib/auth/roles';
 import { requireRoleRoute } from '@/lib/auth/session';
 
 const dashboardCards: Record<UserRole, string[]> = {
   general: ['Explore opportunities', 'Market preferences', 'Messages', 'Profile'],
-  buyer: ['Matches', 'Saved properties', 'Offers', 'Concierge'],
+  buyer: ['Matches', 'Saved properties', 'Residency & Relocation Opportunities', 'Offers', 'Concierge'],
   seller: ['My properties', 'Listing progress', 'Offers', 'Invite Realtor'],
   renter: ['Rental matches', 'Saved rentals', 'Offers', 'Concierge'],
   investor: ['Investment opportunities', 'Saved assets', 'ROI preferences', 'Offers'],
@@ -17,8 +18,8 @@ const dashboardCards: Record<UserRole, string[]> = {
   notary: ['Transactions', 'Appointments', 'Documents', 'Verification'],
   firm_owner: ['Company profile', 'Users', 'Licenses', 'Billing', 'Seller invitations', 'Compliance verification'],
   firm_admin: ['Company profile', 'Users', 'Licenses', 'Seller invitations', 'Documents'],
-  admin: ['Platform users', 'Firms', 'Subscriptions', 'Verification queue', 'Attribution audit', 'Support'],
-  super_admin: ['Full platform access', 'Users', 'Firms', 'Subscriptions', 'Attribution audit', 'Settings']
+  admin: ['Platform users', 'Firms', 'Residency rules', 'Subscriptions', 'Verification queue', 'Attribution audit', 'Support'],
+  super_admin: ['Full platform access', 'Users', 'Firms', 'Residency rules', 'Subscriptions', 'Attribution audit', 'Settings']
 };
 
 export default async function RoleDashboard({ params }: { params: Promise<{ role: string }> }) {
@@ -52,6 +53,11 @@ export default async function RoleDashboard({ params }: { params: Promise<{ role
           ))}
         </div>
       </div>
+      {routeRole === 'buyer' || routeRole === 'investor' ? (
+        <div className="mt-7">
+          <ResidencyDashboardSection profile={profile} />
+        </div>
+      ) : null}
     </ProtectedShell>
   );
 }

@@ -277,6 +277,57 @@ export interface CommissionAttributionRow {
   accepted_at: string | null;
 }
 
+export interface ResidencyRuleRow {
+  id: string;
+  country: string;
+  country_code: string;
+  pathway_key: string;
+  pathway_name: string;
+  status: 'active' | 'draft' | 'paused';
+  min_property_value: number;
+  currency: string;
+  eligible_nationalities: string[];
+  excluded_nationalities: string[];
+  buyer_profile_requirements: Json;
+  summary: string;
+  multilingual_content: Json;
+  disclaimer: string;
+  luxury_markets: string[];
+  managed_by: string | null;
+  reviewed_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ResidencyOpportunityInterestRow {
+  id: string;
+  buyer_id: string;
+  property_id: string | null;
+  country: string;
+  residency_pathway: string;
+  rule_id: string | null;
+  action_source: string;
+  buyer_nationality: string | null;
+  buyer_profile: Json;
+  status: string;
+  assigned_lawyer_id: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ResidencyLawyerReviewRequestRow {
+  id: string;
+  interest_id: string;
+  requested_by: string;
+  assigned_lawyer_id: string | null;
+  country: string;
+  residency_pathway: string;
+  message: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -303,6 +354,17 @@ export interface Database {
       seller_property_onboardings: { Row: SellerPropertyOnboardingRow; Insert: Partial<SellerPropertyOnboardingRow>; Update: Partial<SellerPropertyOnboardingRow> };
       property_attributions: { Row: any; Insert: any; Update: any };
       commission_attributions: { Row: CommissionAttributionRow; Insert: Partial<CommissionAttributionRow>; Update: Partial<CommissionAttributionRow> };
+      residency_rules: { Row: ResidencyRuleRow; Insert: Partial<ResidencyRuleRow>; Update: Partial<ResidencyRuleRow> };
+      residency_opportunity_interests: {
+        Row: ResidencyOpportunityInterestRow;
+        Insert: Partial<ResidencyOpportunityInterestRow>;
+        Update: Partial<ResidencyOpportunityInterestRow>;
+      };
+      residency_lawyer_review_requests: {
+        Row: ResidencyLawyerReviewRequestRow;
+        Insert: Partial<ResidencyLawyerReviewRequestRow>;
+        Update: Partial<ResidencyLawyerReviewRequestRow>;
+      };
       co_listing_agents: { Row: any; Insert: any; Update: any };
       referral_links: { Row: any; Insert: any; Update: any };
       notification_events: { Row: any; Insert: any; Update: any };

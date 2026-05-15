@@ -1,9 +1,25 @@
 import { GoldButton, PageShell, Panel } from '@/components/layout/SiteChrome';
+import { RequestImmigrationReviewButton } from '@/components/residency/RequestImmigrationReviewButton';
+import { ResidencyOpportunityBadge } from '@/components/residency/ResidencyOpportunityBadge';
+import { evaluateResidencyOpportunity } from '@/lib/residency/rules';
 import { properties } from '@/lib/mock/data';
+import { getCurrentUserProfile } from '@/lib/auth/session';
 
 export default async function PropertyDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const property = properties.find((item) => item.id === id) ?? properties[0];
+  const hasSupabaseConfig = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  const { profile } = hasSupabaseConfig ? await getCurrentUserProfile() : { profile: null };
+  const opportunity = evaluateResidencyOpportunity({
+    property,
+    buyerProfile: {
+      nationality: profile?.country,
+      preferredLanguage: profile?.preferred_language,
+      investmentIntent: 'relocation'
+    },
+    actionSource: 'view',
+    language: profile?.preferred_language || 'en'
+  });
 
   return (
     <PageShell
@@ -31,6 +47,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ id:
         </Panel>
 
         <div className="space-y-6">
+          <ResidencyOpportunityBadge opportunity={opportunity} />
           <Panel className="bg-[#171717] p-7 text-white">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
               Private Match Profile
@@ -57,6 +74,15 @@ export default async function PropertyDetail({ params }: { params: Promise<{ id:
                 Request Concierge
               </a>
             </div>
+            {opportunity ? (
+              <div className="mt-5 border-t border-black/10 pt-5">
+                <RequestImmigrationReviewButton
+                  buyerNationality={profile?.country}
+                  opportunity={opportunity}
+                  propertyId={property.id}
+                />
+              </div>
+            ) : null}
           </Panel>
         </div>
       </div>
