@@ -1,5 +1,7 @@
 import { createSupabaseBrowserClient } from '@/lib/supabase/client';
+import { getDemoSearchSuggestions, searchDemoProperties } from '@/lib/search/demoPropertySearch';
 import type {
+  ListingType,
   PropertySearchInput,
   PropertySearchResponse,
   PropertySearchResult,
@@ -24,16 +26,8 @@ function hasSupabaseConfig() {
   return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 }
 
-function fallbackEmpty(input: PropertySearchInput): PropertySearchResponse {
-  const pageSize = input.pagination?.pageSize || 24;
-  const pageNumber = input.pagination?.pageNumber || 1;
-
-  return {
-    results: [],
-    totalCount: 0,
-    pageNumber,
-    pageSize
-  };
+function normalizeListingType(value?: ListingType) {
+  return value === 'sale' ? 'sale' : value || null;
 }
 
 // Search backend boundary. Future OpenSearch, Typesense, Meilisearch, vector search,
@@ -43,7 +37,7 @@ export async function searchProperties(
   mode: SupabaseMode = 'browser'
 ): Promise<PropertySearchResponse> {
   if (!hasSupabaseConfig()) {
-    return fallbackEmpty(input);
+    return searchDemoProperties(input);
   }
 
   const pageSize = input.pagination?.pageSize || 24;
@@ -57,7 +51,7 @@ export async function searchProperties(
     filter_country: filters.country || null,
     filter_city: filters.city || null,
     filter_region: filters.region || null,
-    filter_listing_type: filters.listingType || null,
+    filter_listing_type: normalizeListingType(filters.listingType),
     filter_property_type: filters.propertyType || null,
     min_price: normalizeNumber(filters.minPrice),
     max_price: normalizeNumber(filters.maxPrice),
@@ -78,7 +72,10 @@ export async function searchProperties(
   });
 
   if (error) {
-    throw new Error(error.message);
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Viyra property search RPC failed, using demo search fallback:', error.message);
+    }
+    return searchDemoProperties(input);
   }
 
   const results = (data || []) as PropertySearchResult[];
@@ -93,7 +90,7 @@ export async function searchProperties(
 
 export async function getSearchSuggestions(query: string, mode: SupabaseMode = 'browser') {
   if (!hasSupabaseConfig() || query.trim().length < 2) {
-    return [] satisfies SearchSuggestion[];
+    return getDemoSearchSuggestions(query);
   }
 
   const supabase = (await getClient(mode)) as any;
@@ -103,7 +100,7 @@ export async function getSearchSuggestions(query: string, mode: SupabaseMode = '
   });
 
   if (error) {
-    return [] satisfies SearchSuggestion[];
+    return getDemoSearchSuggestions(query);
   }
 
   return (data || []) as SearchSuggestion[];

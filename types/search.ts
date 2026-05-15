@@ -1,4 +1,4 @@
-export type ListingType = 'buy' | 'rent' | 'new_development';
+export type ListingType = 'sale' | 'rent' | 'new_development';
 
 export type PropertySearchSort =
   | 'relevance'

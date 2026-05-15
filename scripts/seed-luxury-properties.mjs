@@ -101,7 +101,7 @@ function buildProperty(index) {
   const propertyType = propertyTypes[index % propertyTypes.length];
   const lifestyleTags = lifestyleSets[index % lifestyleSets.length];
   const amenities = amenitySets[index % amenitySets.length];
-  const listingType = index % 9 === 0 ? 'rent' : index % 5 === 0 ? 'new_development' : 'buy';
+  const listingType = index !== 0 && index % 9 === 0 ? 'rent' : index !== 0 && index % 5 === 0 ? 'new_development' : 'sale';
   const price = prices[index % prices.length] * (country === 'UAE' ? 1.15 : country === 'France' ? 1.35 : 1);
   const bedrooms = propertyType === 'Investment building' || propertyType === 'Boutique hotel' ? 12 + (index % 16) : 2 + (index % 8);
   const bathrooms = Math.max(2, bedrooms - 1);

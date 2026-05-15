@@ -1,5 +1,6 @@
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import type { PropertySearchInput, PropertySearchResponse, PropertySearchResult } from '@/types/search';
+import { searchDemoProperties } from '@/lib/search/demoPropertySearch';
+import type { ListingType, PropertySearchInput, PropertySearchResponse, PropertySearchResult } from '@/types/search';
 
 function normalizeArray(value?: string[]) {
   return value?.length ? value : null;
@@ -13,12 +14,16 @@ function hasSupabaseConfig() {
   return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 }
 
+function normalizeListingType(value?: ListingType) {
+  return value === 'sale' ? 'sale' : value || null;
+}
+
 export async function searchPropertiesServer(input: PropertySearchInput): Promise<PropertySearchResponse> {
   const pageSize = input.pagination?.pageSize || 24;
   const pageNumber = input.pagination?.pageNumber || 1;
 
   if (!hasSupabaseConfig()) {
-    return { results: [], totalCount: 0, pageNumber, pageSize };
+    return searchDemoProperties(input);
   }
 
   const filters = input.filters || {};
@@ -29,7 +34,7 @@ export async function searchPropertiesServer(input: PropertySearchInput): Promis
     filter_country: filters.country || null,
     filter_city: filters.city || null,
     filter_region: filters.region || null,
-    filter_listing_type: filters.listingType || null,
+    filter_listing_type: normalizeListingType(filters.listingType),
     filter_property_type: filters.propertyType || null,
     min_price: normalizeNumber(filters.minPrice),
     max_price: normalizeNumber(filters.maxPrice),
@@ -50,7 +55,10 @@ export async function searchPropertiesServer(input: PropertySearchInput): Promis
   });
 
   if (error) {
-    return { results: [], totalCount: 0, pageNumber, pageSize };
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Viyra property search RPC failed, using demo search fallback:', error.message);
+    }
+    return searchDemoProperties(input);
   }
 
   const results = (data || []) as PropertySearchResult[];

@@ -54,7 +54,7 @@ export function SearchFilters({
           <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-taupe">Purpose</span>
           <select className="mt-2 w-full border border-black/10 bg-porcelain px-3 py-3 text-sm" onChange={(event) => setValue('listingType', event.target.value)} value={filters.listingType || ''}>
             <option value="">Any</option>
-            <option value="buy">Buy</option>
+            <option value="sale">Buy</option>
             <option value="rent">Rent</option>
             <option value="new_development">New Developments</option>
           </select>

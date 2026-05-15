@@ -10,11 +10,11 @@ function firstParam(value: string | string[] | undefined) {
 }
 
 function normalizeListingType(value: string | undefined): ListingType | undefined {
-  if (value === 'sale') {
-    return 'buy';
+  if (value === 'buy') {
+    return 'sale';
   }
 
-  if (value === 'buy' || value === 'rent' || value === 'new_development') {
+  if (value === 'sale' || value === 'rent' || value === 'new_development') {
     return value;
   }
 
