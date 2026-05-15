@@ -17,7 +17,7 @@ const publicPaths = [
   '/auth/callback'
 ];
 
-const publicPrefixes = ['/api/health', '/api/photography/realtor-requests', '/join', '/property'];
+const publicPrefixes = ['/api/health', '/api/buyer-requests', '/api/photography/realtor-requests', '/join', '/property'];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });

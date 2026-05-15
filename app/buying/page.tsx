@@ -1,4 +1,5 @@
 import { PublicFeatureGrid, PublicPage } from '@/components/marketing/PublicPage';
+import { BuyerRequestForm } from '@/components/buying/BuyerRequestForm';
 
 export default function BuyingPage() {
   return (
@@ -7,6 +8,7 @@ export default function BuyingPage() {
       title="Find exceptional homes with structured private guidance."
       description="Viyra helps buyers express preferences, save properties, coordinate offers, and request concierge support after login."
       cta="Buy with Viyra"
+      ctaSlot={<BuyerRequestForm />}
     >
       <PublicFeatureGrid
         items={[
