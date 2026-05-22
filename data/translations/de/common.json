@@ -1,0 +1,60 @@
+{
+  "brand": "Viyra.com",
+  "nav": {
+    "home": "Start",
+    "buying": "Kaufen",
+    "renting": "Mieten",
+    "selling": "Verkaufen",
+    "newDevelopments": "Neubauprojekte",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "search": "Suche",
+    "ai": "KI-Concierge",
+    "dashboard": "Dashboard",
+    "transactions": "Transaktionen",
+    "documents": "Dokumente",
+    "agents": "Agent Center",
+    "markets": "Märkte"
+  },
+  "actions": {
+    "login": "Einloggen / Starten",
+    "viewHighlights": "Highlights ansehen ->",
+    "learnMore": "Mehr über uns"
+  },
+  "home": {
+    "heroTitle": "Außergewöhnliche Häuser.\nAußergewöhnliches Leben.",
+    "heroCopy": "Kuratierte Luxusimmobilien. Erstklassiger Service.\nIhre Vision, unsere Expertise.",
+    "featuredEyebrow": "Ausgewählte Immobilien",
+    "featuredTitle": "Für Sie kuratiert",
+    "forSale": "Zu verkaufen",
+    "beds": "Schlafzimmer",
+    "baths": "Bäder",
+    "whyEyebrow": "Warum Viyra Realty",
+    "whyTitle": "Diskretion. Expertise. Ergebnisse.",
+    "whyCopy": "Wir bieten ein maßgeschneidertes Immobilienerlebnis, abgestimmt auf Ihren Lebensstil und Ihre Ziele. Mit Marktkenntnis, globalen Verbindungen und absoluter Diskretion erzielen wir außergewöhnliche Ergebnisse.",
+    "strengths": [
+      ["Exklusive Angebote", "Zugang zu Off-Market- und privaten Immobilien."],
+      ["Persönlicher Service", "Individuelle Begleitung in jeder Phase."],
+      ["Globale Reichweite", "Prime-Lagen für anspruchsvolle Kunden weltweit."]
+    ],
+    "quickLinks": {
+      "buy": "Kaufen",
+      "sell": "Verkaufen",
+      "rent": "Mieten",
+      "newDevelopments": "Neubauprojekte entdecken",
+      "join": "Als Professional beitreten"
+    },
+    "stats": [
+      ["2,8 Mrd. EUR+", "Gesamtumsatz"],
+      ["500+", "Verkaufte Immobilien"],
+      ["25+", "Jahre Erfahrung"],
+      ["98%", "Kundenzufriedenheit"]
+    ]
+  },
+  "cta": "Kaufen Sie Luxusimmobilien weltweit mit vollständiger Transparenz.",
+  "footer": "Entwickelt von SaaSolutions SL | (C) 2026 Paradox FZCO. Alle Rechte vorbehalten.",
+  "footerSummary": "Luxusimmobilien, neu gedacht. Globale Immobilienprozesse, KI-gestützte Beratung und diskrete Transaktionsunterstützung für Premium-Käufer, Verkäufer und Berater.",
+  "social": {
+    "followViyra": "VIYRA folgen"
+  }
+}

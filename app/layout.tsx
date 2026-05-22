@@ -1,5 +1,7 @@
-﻿import './globals.css';
+import './globals.css';
 import type { Metadata } from 'next';
+import { dir } from '@/lib/i18n';
+import { getRequestLocale } from '@/lib/i18n/request';
 
 export const metadata: Metadata = {
   title: 'Viyra.com',
@@ -13,9 +15,11 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getRequestLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir(locale)}>
       <body className="min-h-screen">{children}</body>
     </html>
   );

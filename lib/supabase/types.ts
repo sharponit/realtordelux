@@ -368,6 +368,8 @@ export interface Database {
       co_listing_agents: { Row: any; Insert: any; Update: any };
       referral_links: { Row: any; Insert: any; Update: any };
       notification_events: { Row: any; Insert: any; Update: any };
+      buyer_requests: { Row: any; Insert: any; Update: any };
+      buyer_request_realtor_matches: { Row: any; Insert: any; Update: any };
       properties: {
         Row: {
           id: string;

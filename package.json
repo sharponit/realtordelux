@@ -17,6 +17,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.49.4",
+    "framer-motion": "^12.40.0",
     "next": "15.5.18",
     "react": "18.2.0",
     "react-dom": "18.2.0",

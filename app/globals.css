@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -12,7 +12,7 @@ body {
 }
 
 .card {
-  @apply bg-porcelain text-black rounded shadow-xl p-6;
+  @apply rounded bg-porcelain p-6 text-black shadow-xl;
 }
 
 .font-display {
@@ -38,4 +38,9 @@ body {
 .luxury-landing-select option:hover {
   background-color: #e8dcc4;
   color: #000;
+}
+
+.locale-select option {
+  background-color: #fffaf0;
+  color: #171717;
 }

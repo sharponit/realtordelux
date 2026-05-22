@@ -1,1 +1,60 @@
-{"brand":"Viyra.com(TM)","nav":{"home":"Inicio","search":"Buscar","ai":"Conserje IA","dashboard":"Panel","transactions":"Transacciones","documents":"Documentos","agents":"Centro de Agentes","markets":"Mercados"},"cta":"Compre bienes raices de lujo globalmente con total transparencia.","footer":"Viyra.com(TM) - Desarrollado por SaaSolutions SL","social":{"followViyra":"Seguir a VIYRA"}}
+{
+  "brand": "Viyra.com",
+  "nav": {
+    "home": "Inicio",
+    "buying": "Comprar",
+    "renting": "Alquilar",
+    "selling": "Vender",
+    "newDevelopments": "Obra nueva",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "search": "Buscar",
+    "ai": "Conserje IA",
+    "dashboard": "Panel",
+    "transactions": "Transacciones",
+    "documents": "Documentos",
+    "agents": "Centro de agentes",
+    "markets": "Mercados"
+  },
+  "actions": {
+    "login": "Entrar / Empezar",
+    "viewHighlights": "Ver destacados ->",
+    "learnMore": "Conoce más sobre nosotros"
+  },
+  "home": {
+    "heroTitle": "Hogares extraordinarios.\nVidas excepcionales.",
+    "heroCopy": "Propiedades de lujo seleccionadas. Servicio de primer nivel.\nTu visión, nuestra experiencia.",
+    "featuredEyebrow": "Propiedades destacadas",
+    "featuredTitle": "Seleccionadas para ti",
+    "forSale": "En venta",
+    "beds": "Dormitorios",
+    "baths": "Baños",
+    "whyEyebrow": "Por qué elegir Viyra Realty",
+    "whyTitle": "Discreción. Experiencia. Resultados.",
+    "whyCopy": "Ofrecemos una experiencia inmobiliaria a medida, adaptada a tu estilo de vida y aspiraciones. Con conocimiento de mercado, conexiones globales y absoluta discreción, logramos resultados excepcionales.",
+    "strengths": [
+      ["Listados exclusivos", "Acceso a propiedades privadas y fuera de mercado."],
+      ["Servicio personalizado", "Acompañamiento a medida en cada etapa."],
+      ["Alcance global", "Ubicaciones prime para clientes exigentes en todo el mundo."]
+    ],
+    "quickLinks": {
+      "buy": "Comprar",
+      "sell": "Vender",
+      "rent": "Alquilar",
+      "newDevelopments": "Explorar obra nueva",
+      "join": "Unirse como profesional"
+    },
+    "stats": [
+      ["2,8 mil M EUR+", "Ventas totales"],
+      ["500+", "Propiedades vendidas"],
+      ["25+", "Años de experiencia"],
+      ["98%", "Satisfacción de clientes"]
+    ]
+  },
+  "cta": "Compre bienes raíces de lujo en todo el mundo con total transparencia.",
+  "footer": "Desarrollado por SaaSolutions SL | (C) 2026 Paradox FZCO. Todos los derechos reservados.",
+  "footerSummary": "El lujo inmobiliario, reinventado. Flujos de trabajo globales, guía asistida por IA y soporte discreto para compradores, vendedores y asesores premium.",
+  "social": {
+    "followViyra": "Seguir a VIYRA"
+  }
+}

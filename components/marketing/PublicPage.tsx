@@ -7,13 +7,15 @@ export function PublicPage({
   title,
   description,
   children,
-  cta = 'Get Started'
+  cta = 'Get Started',
+  ctaSlot
 }: {
   eyebrow: string;
   title: string;
   description: string;
   children: ReactNode;
   cta?: string;
+  ctaSlot?: ReactNode;
 }) {
   return (
     <PageShell eyebrow={eyebrow} title={title} description={description}>
@@ -27,12 +29,14 @@ export function PublicPage({
           <p className="mt-4 text-sm leading-7 text-taupe">
             Your profile evolves based on your preferences, activity, and verified information.
           </p>
-          <Link
-            href="/login"
-            className="mt-7 inline-flex bg-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#b99655]"
-          >
-            {cta}
-          </Link>
+          {ctaSlot || (
+            <Link
+              href="/login"
+              className="mt-7 inline-flex bg-gold px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#b99655]"
+            >
+              {cta}
+            </Link>
+          )}
         </Panel>
       </div>
     </PageShell>
