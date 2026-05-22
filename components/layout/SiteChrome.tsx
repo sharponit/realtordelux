@@ -2,15 +2,17 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import type { ReactNode } from 'react';
 import { SocialProfileButtons } from '@/components/common/SocialProfileButtons';
+import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
+import { t, type Locale } from '@/lib/i18n';
 
 const navItems = [
-  ['Buying', '/buying'],
-  ['Renting', '/renting'],
-  ['Selling', '/selling'],
-  ['New Developments', '/new-developments'],
-  ['About', '/about'],
-  ['Contact', '/contact']
-] satisfies ReadonlyArray<readonly [string, Route]>;
+  ['buying', '/buying'],
+  ['renting', '/renting'],
+  ['selling', '/selling'],
+  ['newDevelopments', '/new-developments'],
+  ['about', '/about'],
+  ['contact', '/contact']
+] satisfies ReadonlyArray<readonly [keyof ReturnType<typeof t>['nav'], Route]>;
 
 export function ViyraLogo({ light = false }: { light?: boolean }) {
   if (light) {
@@ -41,52 +43,57 @@ export function ViyraLogo({ light = false }: { light?: boolean }) {
   );
 }
 
-export function SiteHeader({ light = false }: { light?: boolean }) {
+export function SiteHeader({ light = false, locale = 'en' }: { light?: boolean; locale?: Locale }) {
+  const copy = t(locale);
+
   return (
-    <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+    <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-6 lg:px-10">
       <ViyraLogo light={light} />
       <nav
         className={`hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.18em] lg:flex ${
           light ? 'text-white/85' : 'text-black/75'
         }`}
       >
-        {navItems.map(([label, href]) => (
+        {navItems.map(([key, href]) => (
           <Link className="transition hover:text-gold" href={href} key={href}>
-            {label}
+            {copy.nav[key]}
           </Link>
         ))}
       </nav>
-      <Link
-        href="/login"
-        className={`hidden border px-6 py-3 text-[11px] font-bold uppercase tracking-[0.16em] transition md:inline-flex ${
-          light
-            ? 'border-gold text-gold hover:bg-gold hover:text-black'
-            : 'border-gold text-black hover:bg-gold hover:text-black'
-        }`}
-      >
-        Login / Get Started
-      </Link>
+      <div className="flex items-center gap-3">
+        <LocaleSwitcher activeLocale={locale} light={light} />
+        <Link
+          href="/login"
+          className={`hidden border px-6 py-3 text-[11px] font-bold uppercase tracking-[0.16em] transition md:inline-flex ${
+            light
+              ? 'border-gold text-gold hover:bg-gold hover:text-black'
+              : 'border-gold text-black hover:bg-gold hover:text-black'
+          }`}
+        >
+          {copy.actions.login}
+        </Link>
+      </div>
     </header>
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ locale = 'en' }: { locale?: Locale }) {
+  const copy = t(locale);
+
   return (
     <footer className="border-t border-black/10 bg-[#171717] text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 md:grid-cols-[auto_1fr_auto] md:items-center lg:px-10">
         <ViyraLogo light />
         <div className="max-w-xl text-sm leading-6 text-white/65">
-          <p>
-            Luxury real estate, reimagined. Global property workflows, AI-assisted guidance, and
-            discreet transaction support for premium buyers, sellers, and advisors.
-          </p>
+          <p>{copy.footerSummary}</p>
           <p className="mt-4 pl-10 text-xs tracking-[0.03em] text-white/50 md:pl-0">
-            Developed by SaaSolutions SL | © 2026 Paradox FZCO. All rights reserved.
+            {copy.footer}
           </p>
         </div>
         <SocialProfileButtons
           variant="footer"
           showLabels={false}
+          locale={locale}
           className="text-white md:justify-end"
         />
       </div>
@@ -98,16 +105,18 @@ export function PageShell({
   eyebrow,
   title,
   description,
-  children
+  children,
+  locale = 'en'
 }: {
   eyebrow: string;
   title: string;
   description: string;
   children: ReactNode;
+  locale?: Locale;
 }) {
   return (
     <main className="min-h-screen bg-porcelain text-black">
-      <SiteHeader />
+      <SiteHeader locale={locale} />
       <section className="border-y border-black/10 bg-ivory/55">
         <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">
@@ -118,7 +127,7 @@ export function PageShell({
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">{children}</section>
-      <SiteFooter />
+      <SiteFooter locale={locale} />
     </main>
   );
 }

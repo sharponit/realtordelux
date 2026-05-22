@@ -1,1 +1,60 @@
-{"brand":"Viyra.com(TM)","nav":{"home":"Home","search":"Search","ai":"AI Concierge","dashboard":"Dashboard","transactions":"Transactions","documents":"Documents","agents":"Agent Center","markets":"Markets"},"cta":"Buy luxury real estate globally with complete transparency.","footer":"Viyra.com(TM) - Developed by SaaSolutions SL","social":{"followViyra":"Follow VIYRA"}}
+{
+  "brand": "Viyra.com",
+  "nav": {
+    "home": "Home",
+    "buying": "Buying",
+    "renting": "Renting",
+    "selling": "Selling",
+    "newDevelopments": "New Developments",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "ai": "AI Concierge",
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "documents": "Documents",
+    "agents": "Agent Center",
+    "markets": "Markets"
+  },
+  "actions": {
+    "login": "Login / Get Started",
+    "viewHighlights": "View Highlights ->",
+    "learnMore": "Learn More About Us"
+  },
+  "home": {
+    "heroTitle": "Extraordinary Homes.\nExceptional Lives.",
+    "heroCopy": "Curated luxury properties. World-class service.\nYour vision, our expertise.",
+    "featuredEyebrow": "Featured Properties",
+    "featuredTitle": "Handpicked For You",
+    "forSale": "For Sale",
+    "beds": "Beds",
+    "baths": "Baths",
+    "whyEyebrow": "Why Choose Viyra Realty",
+    "whyTitle": "Discretion. Expertise. Results.",
+    "whyCopy": "We offer a bespoke real estate experience tailored to your lifestyle and aspirations. With unparalleled market knowledge, global connections, and absolute discretion, we deliver exceptional results.",
+    "strengths": [
+      ["Exclusive Listings", "Access to off-market and private properties."],
+      ["Personalized Service", "Tailored guidance every step of the way."],
+      ["Global Reach", "Prime locations for discerning clients worldwide."]
+    ],
+    "quickLinks": {
+      "buy": "Buy",
+      "sell": "Sell",
+      "rent": "Rent",
+      "newDevelopments": "Explore New Developments",
+      "join": "Join as Professional"
+    },
+    "stats": [
+      ["EUR2.8B+", "Total Sales"],
+      ["500+", "Properties Sold"],
+      ["25+", "Years of Experience"],
+      ["98%", "Client Satisfaction"]
+    ]
+  },
+  "cta": "Buy luxury real estate globally with complete transparency.",
+  "footer": "Developed by SaaSolutions SL | (C) 2026 Paradox FZCO. All rights reserved.",
+  "footerSummary": "Luxury real estate, reimagined. Global property workflows, AI-assisted guidance, and discreet transaction support for premium buyers, sellers, and advisors.",
+  "social": {
+    "followViyra": "Follow VIYRA"
+  }
+}
